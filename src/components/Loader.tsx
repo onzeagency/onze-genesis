@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import onzeLogo from '@/assets/onze-logo.svg';
 
 interface LoaderProps {
   onComplete: () => void;
@@ -26,9 +27,11 @@ const Loader = ({ onComplete }: LoaderProps) => {
     <div className="fixed inset-0 z-50 bg-background flex flex-col items-center justify-center">
       {/* ONZE Logo */}
       <div className="absolute top-8 left-8">
-        <h1 className="font-hardrace text-4xl glow-text tracking-wider">
-          ONZE
-        </h1>
+        <img 
+          src={onzeLogo} 
+          alt="ONZE" 
+          className="w-16 h-16"
+        />
       </div>
 
       {/* Loading Progress */}

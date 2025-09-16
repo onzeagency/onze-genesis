@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import onzeLogo from '@/assets/onze-logo.svg';
 
 const Navigation = () => {
   const [activeTab, setActiveTab] = useState('');
@@ -16,9 +17,11 @@ const Navigation = () => {
       <div className="flex justify-between items-center">
         {/* ONZE Logo */}
         <div>
-          <h1 className="font-hardrace text-4xl glow-text tracking-wider">
-            ONZE
-          </h1>
+          <img 
+            src={onzeLogo} 
+            alt="ONZE" 
+            className="w-12 h-12"
+          />
         </div>
 
         {/* Navigation Menu */}
