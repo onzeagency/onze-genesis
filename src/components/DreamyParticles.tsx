@@ -38,7 +38,7 @@ void main() {
   gl_Position = projectionMatrix * mvPosition;
   
   // Size based on mouse distance and individual particle size
-  gl_PointSize = (aSize * uSize) * (300.0 / -mvPosition.z) * (1.0 + mouseInfluence * 2.0);
+  gl_PointSize = max(1.0, (aSize * uSize) * (600.0 / max(1.0, -mvPosition.z)) * (1.0 + mouseInfluence * 2.0));
   
   vAlpha = aAlpha * (1.0 - mouseInfluence * 0.5);
 }
@@ -96,8 +96,8 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ logoShape, color, mouse
       const i3 = i * 3;
       
       // Current position (start with some randomness)
-      positions[i3] = point.x + (Math.random() - 0.5) * 100;
-      positions[i3 + 1] = point.y + (Math.random() - 0.5) * 100;
+      positions[i3] = point.x + (Math.random() - 0.5) * 40;
+      positions[i3 + 1] = point.y + (Math.random() - 0.5) * 40;
       positions[i3 + 2] = point.z;
       
       // Target position (logo shape)
@@ -208,7 +208,7 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
         const imageData = ctx.getImageData(0, 0, size, size);
         
         const points: THREE.Vector3[] = [];
-        const step = 4; // Sample every 4 pixels
+        const step = 3; // Sample every 3 pixels
         
         for (let y = 0; y < size; y += step) {
           for (let x = 0; x < size; x += step) {
@@ -218,8 +218,8 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
             if (alpha > 50) {
               // Convert to centered coordinates with larger scale
               points.push(new THREE.Vector3(
-                (x - size / 2) * 4, // Increased scale from 2 to 4
-                -(y - size / 2) * 4, // Increased scale from 2 to 4
+                (x - size / 2) * 8, // Increased scale from 4 to 8
+                -(y - size / 2) * 8, // Increased scale from 4 to 8
                 0
               ));
             }
