@@ -79,8 +79,11 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ logoShape, color, mouse
   
   const { size, camera } = useThree();
   
+  console.log('ParticleSystem rendering with', logoShape.length, 'particles');
+  
   // Create geometry with particles based on logo shape
   const { geometry, count } = useMemo(() => {
+    console.log('Creating particle geometry...');
     const particleCount = logoShape.length;
     const geometry = new THREE.BufferGeometry();
     
@@ -112,6 +115,7 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ logoShape, color, mouse
     geometry.setAttribute('aAlpha', new THREE.BufferAttribute(alphas, 1));
     geometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
     
+    console.log('Particle geometry created with', particleCount, 'particles');
     return { geometry, count: particleCount };
   }, [logoShape]);
   
@@ -171,8 +175,10 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
   }, [mouse]);
   
   useEffect(() => {
+    console.log('DreamyParticles component mounted');
     // Read primary color from CSS
     const primaryHsl = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+    console.log('Primary HSL:', primaryHsl);
     if (primaryHsl) {
       const [h, s, l] = primaryHsl.split(' ');
       setColor(new THREE.Color(`hsl(${h}, ${s}, ${l})`));
@@ -180,14 +186,19 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
     
     // Extract logo shape points
     const extractLogoShape = () => {
+      console.log('Starting logo shape extraction...');
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      if (!ctx) return;
+      if (!ctx) {
+        console.error('Could not get canvas context');
+        return;
+      }
       
       const img = new Image();
       img.crossOrigin = 'anonymous';
       
       img.onload = () => {
+        console.log('XI Logo loaded successfully');
         const size = 400;
         canvas.width = size;
         canvas.height = size;
@@ -214,22 +225,40 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
           }
         }
         
+        console.log(`Extracted ${points.length} points from logo`);
         setLogoShape(points);
       };
       
+      img.onerror = (error) => {
+        console.error('Failed to load XI logo:', error);
+      };
+      
+      console.log('Loading XI logo from:', xiLogo);
       img.src = xiLogo;
     };
     
     extractLogoShape();
   }, []);
   
-  if (logoShape.length === 0) return null;
+  if (logoShape.length === 0) {
+    console.log('Logo shape not loaded yet, showing loading...');
+    return (
+      <div className="absolute inset-0 flex items-center justify-center text-white">
+        <div>Loading particles...</div>
+      </div>
+    );
+  }
+
+  console.log('Rendering Canvas with', logoShape.length, 'particles');
   
   return (
     <Canvas
       className="absolute inset-0 w-full h-full cursor-none"
       camera={{ position: [0, 0, 1000], fov: 50 }}
       gl={{ alpha: true, antialias: true }}
+      onCreated={({ gl, scene, camera }) => {
+        console.log('Three.js Canvas created:', { gl, scene, camera });
+      }}
     >
       <ParticleSystem 
         logoShape={logoShape} 
