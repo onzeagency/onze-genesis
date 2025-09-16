@@ -20,7 +20,7 @@ const Navigation = () => {
           <img 
             src={onzeLogo} 
             alt="ONZE" 
-            className="w-12 h-12"
+            className="w-36 h-36 bg-transparent"
           />
         </div>
 

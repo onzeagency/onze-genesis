@@ -30,7 +30,7 @@ const Loader = ({ onComplete }: LoaderProps) => {
         <img 
           src={onzeLogo} 
           alt="ONZE" 
-          className="w-16 h-16"
+          className="w-48 h-48 bg-transparent"
         />
       </div>
 
