@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import xiLogo from '@/assets/xi-logo.svg';
 
 const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -93,15 +94,29 @@ const ParticleBackground = () => {
   }, []);
 
   return (
-    <div className="particle-container">
+    <div className="particle-container relative">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ background: 'transparent' }}
+        style={{ 
+          background: 'transparent',
+          maskImage: `url(${xiLogo})`,
+          maskRepeat: 'no-repeat',
+          maskPosition: 'center',
+          maskSize: '400px 400px',
+          WebkitMaskImage: `url(${xiLogo})`,
+          WebkitMaskRepeat: 'no-repeat',
+          WebkitMaskPosition: 'center',
+          WebkitMaskSize: '400px 400px'
+        }}
       />
-      {/* Central mask area where XI logo will appear */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-64 h-64 rounded-full bg-gradient-radial from-transparent via-background/20 to-background/80 blur-sm" />
+      {/* XI Logo overlay for visual reference */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img 
+          src={xiLogo} 
+          alt="XI" 
+          className="w-96 h-96 opacity-10 blur-sm"
+        />
       </div>
     </div>
   );
