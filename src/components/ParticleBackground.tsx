@@ -11,10 +11,10 @@ const ParticleBackground = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
+    // Set canvas size to a fixed size for the XI logo
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = 384; // 96 * 4 (w-96 = 384px)
+      canvas.height = 384;
     };
 
     resizeCanvas();
@@ -37,15 +37,15 @@ const ParticleBackground = () => {
 
     // Create particles
     const createParticles = () => {
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 100; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.3,
-          color: `hsl(${h} ${s} ${Math.random() * 30 + 40}%)`,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          size: Math.random() * 3 + 1,
+          opacity: Math.random() * 0.8 + 0.2,
+          color: `hsl(${h} ${s} ${Math.random() * 40 + 30}%)`,
         });
       }
     };
@@ -94,28 +94,28 @@ const ParticleBackground = () => {
   }, []);
 
   return (
-    <div className="particle-container relative">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ 
-          background: 'transparent',
-          maskImage: `url(${xiLogo})`,
-          maskRepeat: 'no-repeat',
-          maskPosition: 'center',
-          maskSize: '400px 400px',
-          WebkitMaskImage: `url(${xiLogo})`,
-          WebkitMaskRepeat: 'no-repeat',
-          WebkitMaskPosition: 'center',
-          WebkitMaskSize: '400px 400px'
-        }}
-      />
-      {/* XI Logo overlay for visual reference */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div className="particle-container absolute inset-0 flex items-center justify-center">
+      <div className="relative w-96 h-96">
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ 
+            background: 'transparent',
+            maskImage: `url(${xiLogo})`,
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
+            maskSize: 'contain',
+            WebkitMaskImage: `url(${xiLogo})`,
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            WebkitMaskSize: 'contain'
+          }}
+        />
+        {/* XI Logo overlay for visual reference */}
         <img 
           src={xiLogo} 
           alt="XI" 
-          className="w-96 h-96 opacity-10 blur-sm"
+          className="absolute inset-0 w-full h-full opacity-20"
         />
       </div>
     </div>
