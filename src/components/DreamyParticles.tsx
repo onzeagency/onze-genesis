@@ -121,6 +121,7 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ logoShape, color, mouse
   
   // Shader material
   const material = useMemo(() => {
+    console.log('Creating shader material with color:', color);
     return new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
@@ -128,7 +129,7 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ logoShape, color, mouse
         uTime: { value: 0 },
         uMouse: { value: new THREE.Vector2() },
         uColor: { value: color },
-        uSize: { value: 1.5 },
+        uSize: { value: 3.0 }, // Increased particle size
         uForce: { value: 0.7 }
       },
       transparent: true,
@@ -215,10 +216,10 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
             const alpha = imageData.data[i + 3];
             
             if (alpha > 50) {
-              // Convert to centered coordinates
+              // Convert to centered coordinates with larger scale
               points.push(new THREE.Vector3(
-                (x - size / 2) * 2,
-                -(y - size / 2) * 2,
+                (x - size / 2) * 4, // Increased scale from 2 to 4
+                -(y - size / 2) * 4, // Increased scale from 2 to 4
                 0
               ));
             }
@@ -253,8 +254,8 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
   
   return (
     <Canvas
-      className="absolute inset-0 w-full h-full cursor-none"
-      camera={{ position: [0, 0, 1000], fov: 50 }}
+      className="absolute inset-0 w-full h-full cursor-none z-0"
+      camera={{ position: [0, 0, 800], fov: 75 }} // Reduced distance and increased FOV
       gl={{ alpha: true, antialias: true }}
       onCreated={({ gl, scene, camera }) => {
         console.log('Three.js Canvas created:', { gl, scene, camera });

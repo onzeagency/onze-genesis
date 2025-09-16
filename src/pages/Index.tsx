@@ -29,11 +29,11 @@ const Index = () => {
           <Navigation />
           
           {/* Main Content */}
-          <main className="relative z-10 min-h-screen">
+          <main className="relative z-0 min-h-screen">
             <DreamyParticles mouse={mouse} />
             
             {showContent && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                 <div className="text-center">
                   {/* Content goes here */}
                 </div>
