@@ -19,6 +19,10 @@ const ParticleBackground = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
+    // Read brand color from CSS variables (H and S), vary only lightness
+    const primaryHsl = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+    const [h, s] = primaryHsl.split(' ').slice(0, 2);
+
     // Particle system
     const particles: Array<{
       x: number;
@@ -40,7 +44,7 @@ const ParticleBackground = () => {
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 2 + 1,
           opacity: Math.random() * 0.5 + 0.3,
-          color: `hsl(283, 100%, ${Math.random() * 30 + 40}%)`,
+          color: `hsl(${h} ${s} ${Math.random() * 30 + 40}%)`,
         });
       }
     };
