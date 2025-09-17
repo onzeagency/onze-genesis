@@ -164,102 +164,73 @@ const Artists = () => {
                 <button
                   key={genre}
                   onClick={() => setSelectedGenre(genre)}
-                  className={`relative px-6 py-3 text-xs font-tech font-medium tracking-wider uppercase rounded-lg transition-all duration-700 transform hover:scale-105 group overflow-hidden ${
+                  className={`relative px-6 py-3 text-xs font-tech font-medium tracking-wider uppercase transition-all duration-500 transform hover:scale-105 group overflow-hidden ${
                     selectedGenre === genre
-                      ? 'text-white bg-black/40 border border-primary/50'
-                      : 'text-primary/80 hover:text-white backdrop-blur-sm border border-primary/20 hover:border-primary/40'
+                      ? 'text-white'
+                      : 'text-primary/80 hover:text-white backdrop-blur-sm'
                   }`}
                 >
-                  {/* Digital noise background */}
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                    selectedGenre === genre ? 'opacity-60' : ''
+                  {/* Liquid morphing background */}
+                  <div className={`absolute inset-0 transition-all duration-700 ease-out transform rounded-full ${
+                    selectedGenre === genre
+                      ? 'scale-100 opacity-100'
+                      : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-70'
                   }`}
                        style={{
-                         background: `
-                           repeating-linear-gradient(
-                             0deg,
-                             transparent,
-                             transparent 1px,
-                             hsl(var(--primary) / 0.1) 1px,
-                             hsl(var(--primary) / 0.1) 2px
-                           ),
-                           repeating-linear-gradient(
-                             90deg,
-                             transparent,
-                             transparent 1px,
-                             hsl(var(--primary) / 0.05) 1px,
-                             hsl(var(--primary) / 0.05) 2px
-                           )
-                         `
+                         background: `radial-gradient(ellipse at center, hsl(var(--primary) / 0.9) 0%, hsl(var(--primary) / 0.5) 50%, transparent 70%)`,
+                         filter: 'blur(12px)'
                        }} />
                   
-                  {/* Scanline effect */}
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                    selectedGenre === genre ? 'opacity-40' : ''
-                  }`}>
-                    <div className="absolute w-full h-px bg-primary/60 shadow-[0_0_6px_hsl(var(--primary))]"
-                         style={{
-                           top: '40%',
-                           animation: 'pulse 1.8s ease-in-out infinite'
-                         }} />
-                  </div>
+                  {/* Morphing border */}
+                  <div className={`absolute inset-0 rounded-full border transition-all duration-500 ${
+                    selectedGenre === genre
+                      ? 'border-primary/70 scale-100'
+                      : 'border-primary/30 scale-90 group-hover:border-primary/50 group-hover:scale-100'
+                  }`}
+                       style={{
+                         background: 'linear-gradient(135deg, transparent, hsl(var(--primary) / 0.15), transparent)',
+                         animation: selectedGenre === genre ? 'shimmer 2.5s ease-in-out infinite' : 'none'
+                       }} />
                   
-                  {/* Data stream particles */}
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ${
-                    selectedGenre === genre ? 'opacity-80' : ''
+                  {/* Floating energy particles */}
+                  <div className={`absolute inset-0 transition-opacity duration-500 ${
+                    selectedGenre === genre ? 'opacity-100' : 'opacity-0 group-hover:opacity-80'
                   }`}>
                     {[...Array(4)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute w-px h-2 bg-primary/50 shadow-[0_0_3px_hsl(var(--primary))]"
+                        className="absolute w-1 h-1 bg-white/80 rounded-full"
                         style={{
-                          left: `${20 + i * 20}%`,
-                          animation: `fadeInOut 1.2s ease-in-out infinite`,
-                          animationDelay: `${i * 300}ms`
+                          left: `${20 + i * 15}%`,
+                          top: `${30 + Math.sin(i) * 25}%`,
+                          animation: `float 1.8s ease-in-out infinite`,
+                          animationDelay: `${i * 0.5}s`,
+                          boxShadow: '0 0 8px hsl(var(--primary))'
                         }}
                       />
                     ))}
                   </div>
                   
-                  {/* Holographic shimmer */}
-                  <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 rounded-lg"
-                         style={{
-                           background: `linear-gradient(45deg, transparent 30%, hsl(var(--primary) / 0.2) 50%, transparent 70%)`,
-                           animation: 'shimmer 2.5s ease-in-out infinite'
-                         }} />
-                  </div>
-                  
-                  {/* Glitch typography effect */}
-                  <span className={`relative z-10 block transition-all duration-300 ${
+                  {/* Text with liquid glow */}
+                  <span className={`relative z-10 transition-all duration-300 ${
                     selectedGenre === genre
-                      ? 'drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] tracking-[0.2em]'
-                      : 'group-hover:drop-shadow-[0_0_6px_hsl(var(--primary))] group-hover:tracking-[0.2em]'
+                      ? 'drop-shadow-[0_0_15px_rgba(255,255,255,0.9)] tracking-[0.25em]'
+                      : 'group-hover:drop-shadow-[0_0_10px_hsl(var(--primary))] group-hover:tracking-[0.2em]'
                   }`}>
-                    {genre.split('').map((letter, i) => (
-                      <span
-                        key={i}
-                        className={`inline-block transition-all duration-300 ${
-                          selectedGenre === genre 
-                            ? 'animate-pulse' 
-                            : 'group-hover:animate-pulse'
-                        }`}
-                        style={{
-                          animationDelay: `${i * 80}ms`,
-                          transform: `translateY(${Math.sin(i + Date.now() / 2000) * 1}px)`
-                        }}
-                      >
-                        {letter}
-                      </span>
-                    ))}
+                    {genre}
                   </span>
                   
-                  {/* Digital underline */}
-                  <div className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${
+                  {/* Liquid underline */}
+                  <div className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-out rounded-full ${
                     selectedGenre === genre 
-                      ? 'w-4/5 h-px bg-primary shadow-[0_0_8px_hsl(var(--primary))]'
-                      : 'w-0 group-hover:w-4/5 h-px bg-primary group-hover:shadow-[0_0_6px_hsl(var(--primary))]'
-                  }`} />
+                      ? 'w-4/5 h-0.5 bg-white/80 shadow-[0_0_12px_hsl(var(--primary))]'
+                      : 'w-0 group-hover:w-3/4 h-px bg-primary group-hover:shadow-[0_0_8px_hsl(var(--primary))]'
+                  }`}
+                       style={{
+                         background: selectedGenre === genre 
+                           ? 'linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent)'
+                           : 'hsl(var(--primary))'
+                       }} />
                 </button>
               ))}
             </div>
