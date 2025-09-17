@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
 import onzeLogo from '@/assets/onze-logo.svg';
 
 interface NavigationProps {
@@ -7,19 +7,19 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
   const navItems = [
-    { label: 'Artists', href: '/artists', sectionId: 'artists' },
-    { label: 'Label', href: '/label', sectionId: 'label' },
-    { label: 'Merch', href: '/merch', sectionId: 'merch' },
-    { label: 'Events', href: '/events', sectionId: 'events' },
-    { label: 'About Us', href: '/about-us', sectionId: 'about' },
+    { label: 'Artists', href: '#artists', sectionId: 'artists' },
+    { label: 'Label', href: '#label', sectionId: 'label' },
+    { label: 'Merch', href: '#merch', sectionId: 'merch' },
+    { label: 'Events', href: '#events', sectionId: 'events' },
+    { label: 'About Us', href: '#about', sectionId: 'about' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 p-4 bg-background/90 backdrop-blur-md border-b border-primary/20">
       <div className="flex justify-between items-center">
         {/* ONZE Logo */}
-        <Link
-          to="/"
+        <a
+          href="#home"
           className="transition-transform hover:scale-105 relative"
         >
           <img 
@@ -30,14 +30,14 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
               filter: 'drop-shadow(0 0 15px hsl(312 100% 50% / 0.6))'
             }}
           />
-        </Link>
+        </a>
 
         {/* Navigation Menu */}
         <nav className="flex space-x-6">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.label}
-              to={item.href}
+              href={item.href}
               className={`nav-item relative ${
                 activeSection === item.sectionId ? 'text-primary shadow-neon' : 'text-muted-foreground'
               }`}
@@ -46,7 +46,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
               {activeSection === item.sectionId && (
                 <div className="absolute -inset-2 opacity-50 -z-10" style={{ background: 'var(--gradient-cyber)' }} />
               )}
-            </Link>
+            </a>
           ))}
         </nav>
       </div>

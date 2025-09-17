@@ -156,8 +156,12 @@
   .cyber-button {
     @apply relative px-8 py-4 bg-transparent border-2 border-primary text-primary font-tech font-bold;
     @apply transition-all duration-300 overflow-hidden tracking-wider uppercase;
-    @apply hover:text-background hover:shadow-neon-intense;
+    @apply hover:text-background;
     background: linear-gradient(90deg, transparent 0%, hsl(312 100% 50% / 0.1) 50%, transparent 100%);
+  }
+
+  .cyber-button:hover {
+    box-shadow: var(--shadow-neon-intense);
   }
 
   .cyber-button::before {
