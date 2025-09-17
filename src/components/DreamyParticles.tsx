@@ -9,7 +9,7 @@ interface LogoModelProps {
 
 const LogoModel: React.FC<LogoModelProps> = ({ mouse }) => {
   const meshRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF('/src/assets/xi-logo.glb');
+  const { scene } = useGLTF('/xi-logo.glb');
   const { size, camera } = useThree();
   
   const [originalPosition] = useState(new THREE.Vector3(0, 0, 0));
