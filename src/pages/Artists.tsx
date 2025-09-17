@@ -15,7 +15,7 @@ const artists = [
     genre: 'Techno Underground',
     description: 'Pionnier du son underground avec des beats hypnotiques.',
     image: artistExample1,
-    bio: 'NEXUS explore les frontières de la techno underground depuis plus de 8 ans. Ses performances live sont légendaires dans la scène parisienne.',
+    bio: 'KÖFTER explore les frontières de la techno underground depuis plus de 8 ans. Ses performances live sont légendaires dans la scène parisienne.',
     tracks: ['Dark Protocol', 'System Override', 'Neural Networks'],
     followers: '12.5K',
     releases: 15
@@ -27,7 +27,7 @@ const artists = [
     genre: 'Dark Electronic',
     description: 'Explorateur des profondeurs sonores les plus sombres.',
     image: artistExample2,
-    bio: 'VOID puise son inspiration dans les espaces abandonnés et les paysages industriels pour créer une musique viscérale et émotionnelle.',
+    bio: 'KÖFTER puise son inspiration dans les espaces abandonnés et les paysages industriels pour créer une musique viscérale et émotionnelle.',
     tracks: ['Empty Spaces', 'Industrial Decay', 'Ghost in Machine'],
     followers: '8.9K',
     releases: 12
@@ -39,7 +39,7 @@ const artists = [
     genre: 'Industrial Techno',
     description: 'Fusion parfaite entre industrie et technologie, architecte de rythmes mécaniques puissants.',
     image: '/placeholder.svg',
-    bio: 'PULSE transforme les sons industriels en symphonies électroniques. Ses tracks sont des hymnes à la modernité urbaine.',
+    bio: 'KÖFTER transforme les sons industriels en symphonies électroniques. Ses tracks sont des hymnes à la modernité urbaine.',
     tracks: ['Machine Heart', 'Steel Dreams', 'Urban Warfare'],
     followers: '15.2K',
     releases: 18
@@ -51,7 +51,7 @@ const artists = [
     genre: 'Ambient Electronic',
     description: 'Créateur d\'atmosphères immersives et éthérées qui transcendent les limites du réel.',
     image: '/placeholder.svg',
-    bio: 'ECHO compose des paysages sonores cinématographiques. Ses albums sont des voyages introspectifs dans l\'inconscient collectif.',
+    bio: 'KÖFTER compose des paysages sonores cinématographiques. Ses albums sont des voyages introspectifs dans l\'inconscient collectif.',
     tracks: ['Distant Memories', 'Ethereal Waves', 'Time Collapse'],
     followers: '6.7K',
     releases: 9
@@ -63,7 +63,7 @@ const artists = [
     genre: 'Experimental Bass',
     description: 'Manipulateur de fréquences et architecte du chaos organisé dans l\'univers des basses fréquences.',
     image: '/placeholder.svg',
-    bio: 'FLUX repousse les limites physiques du son. Ses performances sont des expériences sensorielles totales.',
+    bio: 'KÖFTER repousse les limites physiques du son. Ses performances sont des expériences sensorielles totales.',
     tracks: ['Frequency Shift', 'Bass Dimension', 'Quantum Leap'],
     followers: '11.3K',
     releases: 14
@@ -75,7 +75,7 @@ const artists = [
     genre: 'Minimal Techno',
     description: 'Maître de la subtilité et des rythmes hypnotiques, partisan de l\'efficacité minimaliste.',
     image: '/placeholder.svg',
-    bio: 'CIPHER croit en la puissance du minimal. Ses compositions épurées révèlent la beauté dans la simplicité.',
+    bio: 'KÖFTER croit en la puissance du minimal. Ses compositions épurées révèlent la beauté dans la simplicité.',
     tracks: ['Code Breaker', 'Minimal Protocol', 'Silent Algorithm'],
     followers: '9.8K',
     releases: 11
@@ -87,7 +87,7 @@ const artists = [
     genre: 'Acid Techno',
     description: 'Explosion d\'énergie pure et de sons acides qui embrasent les dancefloors underground.',
     image: '/placeholder.svg',
-    bio: 'NOVA ramène l\'esprit acid des années 90 avec une approche moderne. Ses sets sont des déflagrations sonores.',
+    bio: 'KÖFTER ramène l\'esprit acid des années 90 avec une approche moderne. Ses sets sont des déflagrations sonores.',
     tracks: ['Acid Storm', 'TB-303 Dreams', 'Rave Revolution'],
     followers: '13.6K',
     releases: 16
@@ -99,7 +99,7 @@ const artists = [
     genre: 'Dark Ambient',
     description: 'Sculpteur d\'ambiances spectrales et mystérieuses qui hantent l\'imaginaire collectif.',
     image: '/placeholder.svg',
-    bio: 'GHOST explore les territoires sonores les plus sombres. Sa musique est une méditation sur l\'existence et le néant.',
+    bio: 'KÖFTER explore les territoires sonores les plus sombres. Sa musique est une méditation sur l\'existence et le néant.',
     tracks: ['Phantom Echoes', 'Spectral Realm', 'Shadow Dance'],
     followers: '7.4K',
     releases: 10
@@ -111,46 +111,10 @@ const artists = [
     genre: 'Hardcore Techno',
     description: 'Force de la nature dans l\'univers électronique, maître des BPM extrêmes et des kicks puissants.',
     image: '/placeholder.svg',
-    bio: 'STORM incarne la rage et l\'énergie pure. Ses tracks sont des ouragans sonores qui balaient tout sur leur passage.',
+    bio: 'KÖFTER incarne la rage et l\'énergie pure. Ses tracks sont des ouragans sonores qui balaient tout sur leur passage.',
     tracks: ['Thunder Strike', 'Lightning Speed', 'Eye of Storm'],
     followers: '10.9K',
     releases: 13
-  },
-  {
-    id: 10,
-    slug: 'artist-10',
-    name: 'KÖFTER',
-    genre: 'Cyberpunk Techno',
-    description: 'Visionnaire du futur électronique, créateur de bandes sonores pour la réalité virtuelle.',
-    image: '/placeholder.svg',
-    bio: 'MATRIX compose la musique du futur. Ses productions sont des interfaces entre l\'humain et la machine.',
-    tracks: ['Digital Reality', 'Code Matrix', 'Virtual Dreams'],
-    followers: '14.7K',
-    releases: 20
-  },
-  {
-    id: 11,
-    slug: 'artist-11',
-    name: 'KÖFTER',
-    genre: 'Underground Breaks',
-    description: 'Révolutionnaire des breakbeats, anarchiste du rythme qui brise les conventions.',
-    image: '/placeholder.svg',
-    bio: 'REBEL refuse les formats établis. Sa musique est un manifeste contre la standardisation de l\'électronique.',
-    tracks: ['Break the System', 'Rebel Frequency', 'Underground Anthem'],
-    followers: '8.1K',
-    releases: 7
-  },
-  {
-    id: 12,
-    slug: 'artist-12',
-    name: 'KÖFTER',
-    genre: 'Synthwave Techno',
-    description: 'Nostalgique du futur, créateur d\'atmosphères rétro-futuristes baignées de néons.',
-    image: '/placeholder.svg',
-    bio: 'NEON puise dans l\'esthétique des années 80 pour créer la techno de demain. Ses morceaux sont des voyages temporels.',
-    tracks: ['Neon Nights', 'Retro Future', 'Synthwave Paradise'],
-    followers: '12.0K',
-    releases: 17
   }
 ];
 
@@ -306,13 +270,13 @@ const Artists = () => {
             <h2 className="text-4xl font-tech font-bold text-center text-primary mb-12 glow-text">
               ONZE EN CHIFFRES
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-4 gap-8">
               <div className="text-center space-y-2">
-                <div className="text-4xl font-hardrace text-primary glow-text">12</div>
+                <div className="text-4xl font-hardrace text-primary glow-text">9</div>
                 <div className="text-sm font-tech text-muted-foreground uppercase tracking-wider">Artistes</div>
               </div>
               <div className="text-center space-y-2">
-                <div className="text-4xl font-hardrace text-primary glow-text">147</div>
+                <div className="text-4xl font-hardrace text-primary glow-text">107</div>
                 <div className="text-sm font-tech text-muted-foreground uppercase tracking-wider">Releases</div>
               </div>
               <div className="text-center space-y-2">
