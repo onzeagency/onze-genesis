@@ -161,6 +161,36 @@ const Index = () => {
                         </ul>
                       </div>
                     </div>
+                    
+                    {/* SoundCloud Integration */}
+                    <div className="mt-16 space-y-8">
+                      <h3 className="text-3xl font-tech font-bold text-primary text-center glow-text">
+                        ÉCOUTER NOS TRACKS
+                      </h3>
+                      
+                      <div className="holo-card p-6 max-w-4xl mx-auto">
+                        <iframe 
+                          width="100%" 
+                          height="450" 
+                          scrolling="no" 
+                          frameBorder="no" 
+                          allow="autoplay"
+                          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/967849094&color=%23ff00ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                          className="rounded border border-primary/30"
+                        ></iframe>
+                        
+                        <div className="mt-6 text-center">
+                          <a 
+                            href="https://soundcloud.com/onzelabel" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="cyber-button inline-block"
+                          >
+                            <span>DÉCOUVRIR PLUS SUR SOUNDCLOUD</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
