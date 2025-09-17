@@ -19,7 +19,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
       <div className="flex justify-between items-center">
         {/* ONZE Logo */}
         <a
-          href="#home"
+          href="/"
           className="transition-transform hover:scale-105 relative"
         >
           <img 
