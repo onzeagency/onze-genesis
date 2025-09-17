@@ -206,63 +206,36 @@ const Artists = () => {
       {/* Artists Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {filteredArtists.map((artist) => (
               <Link
                 key={artist.id}
                 to={`/artists/${artist.slug}`}
-                className="group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
+                className="group relative bg-card rounded-lg overflow-hidden border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:shadow-neon"
               >
-                <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
+                <div className="relative aspect-square overflow-hidden">
                   <img 
                     src={artist.image} 
                     alt={artist.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                  
-                  {/* Cyber scan line effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-pulse" />
-                  </div>
-                  
-                  {/* Artist info overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 space-y-3">
-                    <div className="space-y-1">
-                      <p className="text-xs font-tech text-primary font-medium uppercase tracking-widest">
-                        {artist.genre}
-                      </p>
-                      <h3 className="text-3xl font-hardrace text-white font-bold glow-text group-hover:text-primary transition-colors duration-300">
-                        {artist.name}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-muted-foreground text-sm font-tech leading-relaxed line-clamp-2">
-                      {artist.description}
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
+                </div>
+                
+                <div className="p-3 space-y-2">
+                  <div>
+                    <h3 className="font-hardrace text-white font-bold text-sm glow-text truncate">
+                      {artist.name}
+                    </h3>
+                    <p className="text-xs font-tech text-primary uppercase tracking-wide">
+                      {artist.genre}
                     </p>
-                    
-                    {/* Stats */}
-                    <div className="flex justify-between items-center pt-2 border-t border-white/10">
-                      <div className="flex gap-4 text-xs font-tech text-muted-foreground">
-                        <span>{artist.followers}</span>
-                        <span>•</span>
-                        <span>{artist.releases} releases</span>
-                      </div>
-                      
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex items-center gap-2 text-xs font-tech text-primary font-medium">
-                          <span>DÉCOUVRIR</span>
-                          <div className="w-4 h-px bg-primary" />
-                        </div>
-                      </div>
-                    </div>
                   </div>
                   
-                  {/* Corner brackets */}
-                  <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute top-3 right-3 w-6 h-6 border-r-2 border-t-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="flex justify-between items-center text-xs font-tech text-muted-foreground">
+                    <span>{artist.followers}</span>
+                    <span>{artist.releases} releases</span>
+                  </div>
                 </div>
               </Link>
             ))}
