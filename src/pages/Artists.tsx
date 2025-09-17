@@ -159,18 +159,67 @@ const Artists = () => {
             </p>
             
             {/* Genre Filter */}
-            <div className="flex flex-wrap justify-center gap-3 mt-12">
+            <div className="flex flex-wrap justify-center gap-4 mt-12">
               {genres.map((genre) => (
                 <button
                   key={genre}
                   onClick={() => setSelectedGenre(genre)}
-                  className={`px-4 py-2 text-xs font-tech font-medium tracking-wider uppercase border transition-all duration-300 ${
+                  className={`relative px-6 py-3 text-xs font-tech font-medium tracking-wider uppercase rounded-full transition-all duration-500 transform hover:scale-110 group overflow-hidden ${
                     selectedGenre === genre
-                      ? 'border-primary bg-primary text-background shadow-neon'
-                      : 'border-primary/30 text-primary hover:border-primary/60 hover:bg-primary/10'
+                      ? 'text-white'
+                      : 'text-primary/80 hover:text-white backdrop-blur-sm'
                   }`}
+                  style={{
+                    background: selectedGenre === genre
+                      ? 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-foreground) / 0.8))'
+                      : 'linear-gradient(135deg, transparent, hsl(var(--primary) / 0.1))',
+                    boxShadow: selectedGenre === genre
+                      ? '0 0 30px hsl(var(--primary) / 0.6), inset 0 0 20px hsl(var(--primary) / 0.2)'
+                      : '0 0 10px hsl(var(--primary) / 0.2)'
+                  }}
                 >
-                  {genre}
+                  {/* Animated background blob */}
+                  <div className={`absolute inset-0 rounded-full transition-all duration-700 ${
+                    selectedGenre === genre
+                      ? 'bg-gradient-to-r from-primary/60 via-primary to-primary/60 animate-pulse'
+                      : 'bg-gradient-to-r from-transparent via-primary/20 to-transparent group-hover:via-primary/40'
+                  }`} />
+                  
+                  {/* Moving shine effect */}
+                  <div className="absolute inset-0 rounded-full overflow-hidden">
+                    <div className={`absolute -inset-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-1000 ${
+                      selectedGenre === genre
+                        ? 'animate-pulse'
+                        : 'group-hover:translate-x-full -translate-x-full'
+                    }`} />
+                  </div>
+                  
+                  {/* Particle effects */}
+                  {selectedGenre === genre && (
+                    <div className="absolute inset-0">
+                      {[...Array(4)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-1 h-1 bg-white/60 rounded-full animate-pulse"
+                          style={{
+                            left: `${20 + i * 15}%`,
+                            top: `${30 + (i % 2) * 40}%`,
+                            animationDelay: `${i * 300}ms`,
+                            animationDuration: `${1.5 + i * 0.3}s`
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                  
+                  {/* Text with glow */}
+                  <span className={`relative z-10 transition-all duration-300 ${
+                    selectedGenre === genre
+                      ? 'drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
+                      : 'group-hover:drop-shadow-[0_0_6px_hsl(var(--primary))]'
+                  }`}>
+                    {genre}
+                  </span>
                 </button>
               ))}
             </div>
