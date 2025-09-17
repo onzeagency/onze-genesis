@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Loader from '@/components/Loader';
 import Navigation from '@/components/Navigation';
 import DreamyParticles from '@/components/DreamyParticles';
+import xiLogoMain from '@/assets/xi-logo-main.png';
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
@@ -79,9 +80,17 @@ const Index = () => {
           <Navigation activeSection={activeSection} />
           
           {/* Hero Section with Particles */}
-          <section id="home" className="relative min-h-screen">
+          <section id="home" className="relative min-h-screen flex items-center justify-center">
             <DreamyParticles mouse={mouse} />
             
+            {/* Main XI Logo */}
+            <div className="relative z-10 flex items-center justify-center">
+              <img 
+                src={xiLogoMain} 
+                alt="XI" 
+                className="w-96 h-96 object-contain animate-pulse-glow"
+              />
+            </div>
           </section>
 
           {/* Artists Section */}
