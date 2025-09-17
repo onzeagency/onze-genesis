@@ -353,11 +353,6 @@ const Artists = () => {
                     </span>
                   </div>
                   
-                  {/* Digital progress bar */}
-                  <div className="w-full h-px bg-primary/20 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse" />
-                    <div className="absolute left-0 top-0 h-full w-2 bg-primary shadow-[0_0_8px_hsl(var(--primary))] transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  </div>
                 </div>
                 
                 {/* Holographic border effect */}
