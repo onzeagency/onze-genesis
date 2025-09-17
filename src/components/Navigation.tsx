@@ -15,31 +15,37 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 p-2 bg-background/80 backdrop-blur-sm border-b border-primary/10">
+    <header className="fixed top-0 left-0 right-0 z-40 p-4 bg-background/90 backdrop-blur-md border-b border-primary/20">
       <div className="flex justify-between items-center">
         {/* ONZE Logo */}
         <Link
           to="/"
-          className="transition-transform hover:scale-105"
+          className="transition-transform hover:scale-105 relative"
         >
           <img 
             src={onzeLogo} 
             alt="ONZE" 
-            className="w-16 h-16 bg-transparent"
+            className="w-16 h-16 bg-transparent animate-cyber-pulse"
+            style={{
+              filter: 'drop-shadow(0 0 15px hsl(312 100% 50% / 0.6))'
+            }}
           />
         </Link>
 
         {/* Navigation Menu */}
-        <nav className="flex space-x-8">
+        <nav className="flex space-x-6">
           {navItems.map((item) => (
             <Link
               key={item.label}
               to={item.href}
-              className={`nav-item transition-colors ${
-                activeSection === item.sectionId ? 'text-foreground' : 'text-primary hover:text-foreground'
+              className={`nav-item relative ${
+                activeSection === item.sectionId ? 'text-primary shadow-neon' : 'text-muted-foreground'
               }`}
             >
               {item.label}
+              {activeSection === item.sectionId && (
+                <div className="absolute -inset-2 opacity-50 -z-10" style={{ background: 'var(--gradient-cyber)' }} />
+              )}
             </Link>
           ))}
         </nav>

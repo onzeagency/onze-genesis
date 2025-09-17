@@ -1,0 +1,36 @@
+import React from 'react';
+
+interface TechnoGridProps {
+  className?: string;
+}
+
+const TechnoGrid: React.FC<TechnoGridProps> = ({ className = '' }) => {
+  return (
+    <div className={`absolute inset-0 ${className}`}>
+      {/* Main grid */}
+      <div className="absolute inset-0 cyber-grid opacity-30" />
+      
+      {/* Scan lines */}
+      <div className="absolute inset-0 scan-lines opacity-20" />
+      
+      {/* Corner brackets */}
+      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-primary opacity-60" />
+      <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-primary opacity-60" />
+      <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-primary opacity-60" />
+      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-primary opacity-60" />
+      
+      {/* Center crosshair */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="w-12 h-px bg-primary opacity-40" />
+        <div className="w-px h-12 bg-primary opacity-40 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+      </div>
+      
+      {/* Floating elements */}
+      <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary opacity-50 animate-pulse" />
+      <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-primary opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 left-1/6 w-1.5 h-1.5 bg-primary opacity-30 animate-pulse" style={{ animationDelay: '2s' }} />
+    </div>
+  );
+};
+
+export default TechnoGrid;
