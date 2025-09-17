@@ -15,7 +15,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 p-4 bg-background/90 backdrop-blur-md border-b border-primary/20">
+    <header className="fixed top-0 left-0 right-0 z-40 p-2 bg-background/90 backdrop-blur-md border-b border-primary/20">
       <div className="flex justify-between items-center">
         {/* ONZE Logo */}
         <a
@@ -25,7 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
           <img 
             src={onzeLogo} 
             alt="ONZE" 
-            className="w-16 h-16 bg-transparent animate-cyber-pulse"
+            className="w-10 h-10 bg-transparent animate-cyber-pulse"
             style={{
               filter: 'drop-shadow(0 0 15px hsl(312 100% 50% / 0.6))'
             }}
