@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import TechnoGrid from '@/components/TechnoGrid';
 import GlitchText from '@/components/GlitchText';
+import artistExample1 from '@/assets/artist-example-1.jpg';
+import artistExample2 from '@/assets/artist-example-2.jpg';
 
 // Extended artists data with more details
 const artists = [
@@ -11,8 +13,8 @@ const artists = [
     slug: 'artist-1',
     name: 'NEXUS',
     genre: 'Techno Underground',
-    description: 'Pionnier du son underground avec des beats hypnotiques qui transportent l\'auditeur dans des dimensions parallèles.',
-    image: '/placeholder.svg',
+    description: 'Pionnier du son underground avec des beats hypnotiques.',
+    image: artistExample1,
     bio: 'NEXUS explore les frontières de la techno underground depuis plus de 8 ans. Ses performances live sont légendaires dans la scène parisienne.',
     tracks: ['Dark Protocol', 'System Override', 'Neural Networks'],
     followers: '12.5K',
@@ -23,8 +25,8 @@ const artists = [
     slug: 'artist-2', 
     name: 'VOID',
     genre: 'Dark Electronic',
-    description: 'Explorateur des profondeurs sonores les plus sombres, créateur d\'ambiances post-apocalyptiques.',
-    image: '/placeholder.svg',
+    description: 'Explorateur des profondeurs sonores les plus sombres.',
+    image: artistExample2,
     bio: 'VOID puise son inspiration dans les espaces abandonnés et les paysages industriels pour créer une musique viscérale et émotionnelle.',
     tracks: ['Empty Spaces', 'Industrial Decay', 'Ghost in Machine'],
     followers: '8.9K',
@@ -204,53 +206,63 @@ const Artists = () => {
       {/* Artists Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredArtists.map((artist) => (
               <Link
                 key={artist.id}
                 to={`/artists/${artist.slug}`}
-                className="holo-card group relative overflow-hidden transition-all duration-500 hover:scale-105"
+                className="group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
               >
-                <div className="aspect-square bg-gradient-to-br from-card to-background rounded-t-lg mb-4 overflow-hidden relative">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
                   <img 
                     src={artist.image} 
                     alt={artist.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex justify-between items-end">
-                      <div>
-                        <p className="text-xs font-tech text-primary font-medium">{artist.genre}</p>
-                        <h3 className="text-2xl font-tech text-foreground font-bold glow-text">{artist.name}</h3>
-                      </div>
-                      <div className="text-right text-xs font-tech text-muted-foreground">
-                        <p>{artist.followers} followers</p>
-                        <p>{artist.releases} releases</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="p-6 space-y-4">
-                  <p className="text-muted-foreground text-sm font-tech leading-relaxed">{artist.description}</p>
                   
-                  <div className="space-y-2">
-                    <p className="text-xs font-tech text-primary font-medium uppercase tracking-wider">Top Tracks:</p>
-                    <div className="flex flex-wrap gap-1">
-                      {artist.tracks.slice(0, 2).map((track, index) => (
-                        <span key={index} className="text-xs font-tech text-muted-foreground bg-card px-2 py-1 rounded">
-                          {track}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                  
+                  {/* Cyber scan line effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-pulse" />
                   </div>
                   
-                  <div className="pt-4 border-t border-primary/20">
-                    <p className="text-xs font-tech text-primary hover:text-primary-intense transition-colors">
-                      DÉCOUVRIR PROFIL →
+                  {/* Artist info overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 space-y-3">
+                    <div className="space-y-1">
+                      <p className="text-xs font-tech text-primary font-medium uppercase tracking-widest">
+                        {artist.genre}
+                      </p>
+                      <h3 className="text-3xl font-hardrace text-white font-bold glow-text group-hover:text-primary transition-colors duration-300">
+                        {artist.name}
+                      </h3>
+                    </div>
+                    
+                    <p className="text-muted-foreground text-sm font-tech leading-relaxed line-clamp-2">
+                      {artist.description}
                     </p>
+                    
+                    {/* Stats */}
+                    <div className="flex justify-between items-center pt-2 border-t border-white/10">
+                      <div className="flex gap-4 text-xs font-tech text-muted-foreground">
+                        <span>{artist.followers}</span>
+                        <span>•</span>
+                        <span>{artist.releases} releases</span>
+                      </div>
+                      
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="flex items-center gap-2 text-xs font-tech text-primary font-medium">
+                          <span>DÉCOUVRIR</span>
+                          <div className="w-4 h-px bg-primary" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  
+                  {/* Corner brackets */}
+                  <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-3 right-3 w-6 h-6 border-r-2 border-t-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </Link>
             ))}
