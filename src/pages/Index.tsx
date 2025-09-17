@@ -3,22 +3,25 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Loader from '@/components/Loader';
 import Navigation from '@/components/Navigation';
 import DreamyParticles from '@/components/DreamyParticles';
-
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [mouse, setMouse] = useState({
+    x: 0,
+    y: 0
+  });
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
   const navigate = useNavigate();
-
   const handleLoadingComplete = () => {
     setIsLoading(false);
     setTimeout(() => setShowContent(true), 300);
   };
-
   const handleMouseMove = (e: React.MouseEvent) => {
-    setMouse({ x: e.clientX, y: e.clientY });
+    setMouse({
+      x: e.clientX,
+      y: e.clientY
+    });
   };
 
   // Handle direct URL access to sections
@@ -26,16 +29,10 @@ const Index = () => {
     if (!isLoading && showContent) {
       const path = location.pathname;
       let sectionId = 'home';
-      
-      if (path === '/artists') sectionId = 'artists';
-      else if (path === '/label') sectionId = 'label';
-      else if (path === '/merch') sectionId = 'merch';
-      else if (path === '/events') sectionId = 'events';
-      else if (path === '/about-us') sectionId = 'about';
-
+      if (path === '/artists') sectionId = 'artists';else if (path === '/label') sectionId = 'label';else if (path === '/merch') sectionId = 'merch';else if (path === '/events') sectionId = 'events';else if (path === '/about-us') sectionId = 'about';
       if (sectionId !== 'home') {
         setTimeout(() => {
-          document.getElementById(sectionId)?.scrollIntoView({ 
+          document.getElementById(sectionId)?.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
@@ -55,44 +52,37 @@ const Index = () => {
         if (element) {
           const offsetTop = element.offsetTop;
           const height = element.offsetHeight;
-          
           if (scrollPos >= offsetTop && scrollPos < offsetTop + height) {
             setActiveSection(sectionId);
-            
+
             // Update URL without scrolling
             const newPath = sectionId === 'home' ? '/' : `/${sectionId === 'about' ? 'about-us' : sectionId}`;
             if (location.pathname !== newPath) {
-              navigate(newPath, { replace: true });
+              navigate(newPath, {
+                replace: true
+              });
             }
             break;
           }
         }
       }
     };
-
     if (showContent) {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, [showContent, navigate, location.pathname]);
-
-  return (
-    <div 
-      className="bg-background relative"
-      onMouseMove={handleMouseMove}
-    >
+  return <div className="bg-background relative" onMouseMove={handleMouseMove}>
       {isLoading && <Loader onComplete={handleLoadingComplete} />}
       
-      {!isLoading && (
-        <>
+      {!isLoading && <>
           <Navigation activeSection={activeSection} />
           
           {/* Hero Section with Particles */}
           <section id="home" className="relative min-h-screen">
             <DreamyParticles mouse={mouse} />
             
-            {showContent && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+            {showContent && <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                 <div className="text-center">
                   <h1 className="text-8xl font-hardrace text-primary mb-4 glow-text">
                     ONZE
@@ -101,13 +91,10 @@ const Index = () => {
                     Underground Music Label
                   </p>
                   <div className="pointer-events-auto">
-                    <p className="text-sm text-muted-foreground/60 animate-pulse">
-                      Scrollez pour découvrir ↓
-                    </p>
+                    
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
           </section>
 
           {/* Artists Section */}
@@ -310,9 +297,7 @@ const Index = () => {
               </div>
             </div>
           </section>
-        </>
-      )}
-    </div>
-  );
+        </>}
+    </div>;
 };
 export default Index;
