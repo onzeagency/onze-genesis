@@ -129,7 +129,7 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ logoShape, color, mouse
         uTime: { value: 0 },
         uMouse: { value: new THREE.Vector2() },
         uColor: { value: color },
-        uSize: { value: 3.0 }, // Increased particle size
+        uSize: { value: 4.0 }, // Increased particle size for better visibility
         uForce: { value: 0.7 }
       },
       transparent: true,
@@ -200,7 +200,7 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
       
       img.onload = () => {
         console.log('XI Logo loaded successfully');
-        const size = 400;
+        const size = 500; // Larger size for more detail
         canvas.width = size;
         canvas.height = size;
         
@@ -208,7 +208,7 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
         const imageData = ctx.getImageData(0, 0, size, size);
         
         const points: THREE.Vector3[] = [];
-        const step = 3; // Sample every 3 pixels
+        const step = 2; // Sample every 2 pixels for denser effect
         
         for (let y = 0; y < size; y += step) {
           for (let x = 0; x < size; x += step) {
@@ -216,10 +216,10 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
             const alpha = imageData.data[i + 3];
             
             if (alpha > 50) {
-              // Convert to centered coordinates with larger scale
+              // Convert to centered coordinates with larger scale for full screen
               points.push(new THREE.Vector3(
-                (x - size / 2) * 8, // Increased scale from 4 to 8
-                -(y - size / 2) * 8, // Increased scale from 4 to 8
+                (x - size / 2) * 1.5, // Adjusted scale for better full screen coverage
+                -(y - size / 2) * 1.5, // Adjusted scale for better full screen coverage
                 0
               ));
             }
@@ -254,8 +254,16 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
   
   return (
     <Canvas
-      className="absolute inset-0 w-full h-full cursor-none z-0"
-      camera={{ position: [0, 0, 800], fov: 75 }} // Reduced distance and increased FOV
+      style={{ 
+        position: 'absolute', 
+        top: '144px', // Start below navigation (about 9rem)
+        left: 0, 
+        width: '100%', 
+        height: 'calc(100vh - 144px)', // Fill remaining height
+        zIndex: 1,
+        background: 'transparent' 
+      }}
+      camera={{ position: [0, 0, 400], fov: 75 }} // Adjusted camera for better full screen view
       gl={{ alpha: true, antialias: true }}
       onCreated={({ gl, scene, camera }) => {
         console.log('Three.js Canvas created:', { gl, scene, camera });
