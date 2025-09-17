@@ -164,62 +164,102 @@ const Artists = () => {
                 <button
                   key={genre}
                   onClick={() => setSelectedGenre(genre)}
-                  className={`relative px-6 py-3 text-xs font-tech font-medium tracking-wider uppercase rounded-full transition-all duration-500 transform hover:scale-110 group overflow-hidden ${
+                  className={`relative px-6 py-3 text-xs font-tech font-medium tracking-wider uppercase rounded-lg transition-all duration-700 transform hover:scale-105 group overflow-hidden ${
                     selectedGenre === genre
-                      ? 'text-white'
-                      : 'text-primary/80 hover:text-white backdrop-blur-sm'
+                      ? 'text-white bg-black/40 border border-primary/50'
+                      : 'text-primary/80 hover:text-white backdrop-blur-sm border border-primary/20 hover:border-primary/40'
                   }`}
-                  style={{
-                    background: selectedGenre === genre
-                      ? 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-foreground) / 0.8))'
-                      : 'linear-gradient(135deg, transparent, hsl(var(--primary) / 0.1))',
-                    boxShadow: selectedGenre === genre
-                      ? '0 0 30px hsl(var(--primary) / 0.6), inset 0 0 20px hsl(var(--primary) / 0.2)'
-                      : '0 0 10px hsl(var(--primary) / 0.2)'
-                  }}
                 >
-                  {/* Animated background blob */}
-                  <div className={`absolute inset-0 rounded-full transition-all duration-700 ${
-                    selectedGenre === genre
-                      ? 'bg-gradient-to-r from-primary/60 via-primary to-primary/60 animate-pulse'
-                      : 'bg-gradient-to-r from-transparent via-primary/20 to-transparent group-hover:via-primary/40'
-                  }`} />
+                  {/* Digital noise background */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                    selectedGenre === genre ? 'opacity-60' : ''
+                  }`}
+                       style={{
+                         background: `
+                           repeating-linear-gradient(
+                             0deg,
+                             transparent,
+                             transparent 1px,
+                             hsl(var(--primary) / 0.1) 1px,
+                             hsl(var(--primary) / 0.1) 2px
+                           ),
+                           repeating-linear-gradient(
+                             90deg,
+                             transparent,
+                             transparent 1px,
+                             hsl(var(--primary) / 0.05) 1px,
+                             hsl(var(--primary) / 0.05) 2px
+                           )
+                         `
+                       }} />
                   
-                  {/* Moving shine effect */}
-                  <div className="absolute inset-0 rounded-full overflow-hidden">
-                    <div className={`absolute -inset-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-1000 ${
-                      selectedGenre === genre
-                        ? 'animate-pulse'
-                        : 'group-hover:translate-x-full -translate-x-full'
-                    }`} />
+                  {/* Scanline effect */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                    selectedGenre === genre ? 'opacity-40' : ''
+                  }`}>
+                    <div className="absolute w-full h-px bg-primary/60 shadow-[0_0_6px_hsl(var(--primary))]"
+                         style={{
+                           top: '40%',
+                           animation: 'pulse 1.8s ease-in-out infinite'
+                         }} />
                   </div>
                   
-                  {/* Particle effects */}
-                  {selectedGenre === genre && (
-                    <div className="absolute inset-0">
-                      {[...Array(4)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-1 h-1 bg-white/60 rounded-full animate-pulse"
-                          style={{
-                            left: `${20 + i * 15}%`,
-                            top: `${30 + (i % 2) * 40}%`,
-                            animationDelay: `${i * 300}ms`,
-                            animationDuration: `${1.5 + i * 0.3}s`
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
-                  
-                  {/* Text with glow */}
-                  <span className={`relative z-10 transition-all duration-300 ${
-                    selectedGenre === genre
-                      ? 'drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
-                      : 'group-hover:drop-shadow-[0_0_6px_hsl(var(--primary))]'
+                  {/* Data stream particles */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ${
+                    selectedGenre === genre ? 'opacity-80' : ''
                   }`}>
-                    {genre}
+                    {[...Array(4)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-px h-2 bg-primary/50 shadow-[0_0_3px_hsl(var(--primary))]"
+                        style={{
+                          left: `${20 + i * 20}%`,
+                          animation: `fadeInOut 1.2s ease-in-out infinite`,
+                          animationDelay: `${i * 300}ms`
+                        }}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Holographic shimmer */}
+                  <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 rounded-lg"
+                         style={{
+                           background: `linear-gradient(45deg, transparent 30%, hsl(var(--primary) / 0.2) 50%, transparent 70%)`,
+                           animation: 'shimmer 2.5s ease-in-out infinite'
+                         }} />
+                  </div>
+                  
+                  {/* Glitch typography effect */}
+                  <span className={`relative z-10 block transition-all duration-300 ${
+                    selectedGenre === genre
+                      ? 'drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] tracking-[0.2em]'
+                      : 'group-hover:drop-shadow-[0_0_6px_hsl(var(--primary))] group-hover:tracking-[0.2em]'
+                  }`}>
+                    {genre.split('').map((letter, i) => (
+                      <span
+                        key={i}
+                        className={`inline-block transition-all duration-300 ${
+                          selectedGenre === genre 
+                            ? 'animate-pulse' 
+                            : 'group-hover:animate-pulse'
+                        }`}
+                        style={{
+                          animationDelay: `${i * 80}ms`,
+                          transform: `translateY(${Math.sin(i + Date.now() / 2000) * 1}px)`
+                        }}
+                      >
+                        {letter}
+                      </span>
+                    ))}
                   </span>
+                  
+                  {/* Digital underline */}
+                  <div className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${
+                    selectedGenre === genre 
+                      ? 'w-4/5 h-px bg-primary shadow-[0_0_8px_hsl(var(--primary))]'
+                      : 'w-0 group-hover:w-4/5 h-px bg-primary group-hover:shadow-[0_0_6px_hsl(var(--primary))]'
+                  }`} />
                 </button>
               ))}
             </div>
