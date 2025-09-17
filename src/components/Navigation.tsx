@@ -1,46 +1,41 @@
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import onzeLogo from '@/assets/onze-logo.svg';
 
 const Navigation = () => {
-  const [activeTab, setActiveTab] = useState('');
+  const location = useLocation();
 
   const navItems = [
-    { label: 'Artists', href: '#artists' },
-    { label: 'Label', href: '#label' },
-    { label: 'Merch', href: '#merch' },
-    { label: 'Events', href: '#events' },
-    { label: 'About Us', href: '#about' },
+    { label: 'Artists', href: '/artists' },
+    { label: 'Label', href: '/label' },
+    { label: 'Merch', href: '/merch' },
+    { label: 'Events', href: '/events' },
+    { label: 'About Us', href: '/about-us' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 p-8">
       <div className="flex justify-between items-center">
         {/* ONZE Logo */}
-        <div>
+        <Link to="/">
           <img 
             src={onzeLogo} 
             alt="ONZE" 
-            className="w-36 h-36 bg-transparent"
+            className="w-36 h-36 bg-transparent hover:scale-105 transition-transform"
           />
-        </div>
+        </Link>
 
         {/* Navigation Menu */}
         <nav className="flex space-x-8">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
+              to={item.href}
               className={`nav-item ${
-                activeTab === item.label ? 'text-primary' : 'text-foreground'
+                location.pathname === item.href ? 'text-primary' : 'text-foreground'
               }`}
-              onClick={(e) => {
-                e.preventDefault();
-                setActiveTab(item.label);
-                // Add smooth scroll or navigation logic here
-              }}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
