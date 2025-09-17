@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import CyberBackground from '@/components/CyberBackground';
 import TechnoGrid from '@/components/TechnoGrid';
 import GlitchText from '@/components/GlitchText';
+import DreamyLogo from '@/components/DreamyLogo';
 import xiLogoMain from '@/assets/xi-logo-main.png';
 
 const Index = () => {
@@ -41,17 +42,8 @@ const Index = () => {
               
               {/* Main XI Logo */}
               <div className="relative z-20 flex flex-col items-center justify-center space-y-8">
-                <div className="relative">
-                  <img 
-                    src={xiLogoMain} 
-                    alt="XI" 
-                    className="w-96 h-96 object-contain animate-cyber-pulse"
-                    style={{
-                      filter: 'drop-shadow(0 0 30px hsl(312 100% 50% / 0.8))'
-                    }}
-                  />
-                  {/* Holographic overlay */}
-                  <div className="absolute inset-0 opacity-30 mix-blend-overlay" style={{ background: 'var(--gradient-cyber)' }} />
+                <div className="w-full h-96">
+                  <DreamyLogo />
                 </div>
                 
                 {/* Underground label */}
