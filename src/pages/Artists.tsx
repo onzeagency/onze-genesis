@@ -11,7 +11,7 @@ const artists = [
   {
     id: 1,
     slug: 'artist-1',
-    name: 'NEXUS',
+    name: 'KÖFTER',
     genre: 'Techno Underground',
     description: 'Pionnier du son underground avec des beats hypnotiques.',
     image: artistExample1,
@@ -23,7 +23,7 @@ const artists = [
   {
     id: 2,
     slug: 'artist-2', 
-    name: 'VOID',
+    name: 'KÖFTER',
     genre: 'Dark Electronic',
     description: 'Explorateur des profondeurs sonores les plus sombres.',
     image: artistExample2,
@@ -35,7 +35,7 @@ const artists = [
   {
     id: 3,
     slug: 'artist-3',
-    name: 'PULSE',
+    name: 'KÖFTER',
     genre: 'Industrial Techno',
     description: 'Fusion parfaite entre industrie et technologie, architecte de rythmes mécaniques puissants.',
     image: '/placeholder.svg',
@@ -47,7 +47,7 @@ const artists = [
   {
     id: 4,
     slug: 'artist-4',
-    name: 'ECHO',
+    name: 'KÖFTER',
     genre: 'Ambient Electronic',
     description: 'Créateur d\'atmosphères immersives et éthérées qui transcendent les limites du réel.',
     image: '/placeholder.svg',
@@ -59,7 +59,7 @@ const artists = [
   {
     id: 5,
     slug: 'artist-5',
-    name: 'FLUX',
+    name: 'KÖFTER',
     genre: 'Experimental Bass',
     description: 'Manipulateur de fréquences et architecte du chaos organisé dans l\'univers des basses fréquences.',
     image: '/placeholder.svg',
@@ -71,7 +71,7 @@ const artists = [
   {
     id: 6,
     slug: 'artist-6',
-    name: 'CIPHER',
+    name: 'KÖFTER',
     genre: 'Minimal Techno',
     description: 'Maître de la subtilité et des rythmes hypnotiques, partisan de l\'efficacité minimaliste.',
     image: '/placeholder.svg',
@@ -83,7 +83,7 @@ const artists = [
   {
     id: 7,
     slug: 'artist-7',
-    name: 'NOVA',
+    name: 'KÖFTER',
     genre: 'Acid Techno',
     description: 'Explosion d\'énergie pure et de sons acides qui embrasent les dancefloors underground.',
     image: '/placeholder.svg',
@@ -95,7 +95,7 @@ const artists = [
   {
     id: 8,
     slug: 'artist-8',
-    name: 'GHOST',
+    name: 'KÖFTER',
     genre: 'Dark Ambient',
     description: 'Sculpteur d\'ambiances spectrales et mystérieuses qui hantent l\'imaginaire collectif.',
     image: '/placeholder.svg',
@@ -107,7 +107,7 @@ const artists = [
   {
     id: 9,
     slug: 'artist-9',
-    name: 'STORM',
+    name: 'KÖFTER',
     genre: 'Hardcore Techno',
     description: 'Force de la nature dans l\'univers électronique, maître des BPM extrêmes et des kicks puissants.',
     image: '/placeholder.svg',
@@ -119,7 +119,7 @@ const artists = [
   {
     id: 10,
     slug: 'artist-10',
-    name: 'MATRIX',
+    name: 'KÖFTER',
     genre: 'Cyberpunk Techno',
     description: 'Visionnaire du futur électronique, créateur de bandes sonores pour la réalité virtuelle.',
     image: '/placeholder.svg',
@@ -131,7 +131,7 @@ const artists = [
   {
     id: 11,
     slug: 'artist-11',
-    name: 'REBEL',
+    name: 'KÖFTER',
     genre: 'Underground Breaks',
     description: 'Révolutionnaire des breakbeats, anarchiste du rythme qui brise les conventions.',
     image: '/placeholder.svg',
@@ -143,7 +143,7 @@ const artists = [
   {
     id: 12,
     slug: 'artist-12',
-    name: 'NEON',
+    name: 'KÖFTER',
     genre: 'Synthwave Techno',
     description: 'Nostalgique du futur, créateur d\'atmosphères rétro-futuristes baignées de néons.',
     image: '/placeholder.svg',
