@@ -157,6 +157,7 @@ const artists = [
 const Artists = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [selectedGenre, setSelectedGenre] = useState('All');
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setMouse({ x: e.clientX, y: e.clientY });
@@ -164,6 +165,16 @@ const Artists = () => {
 
   const genres = ['All', ...Array.from(new Set(artists.map(artist => artist.genre)))];
   const filteredArtists = selectedGenre === 'All' ? artists : artists.filter(artist => artist.genre === selectedGenre);
+
+  // Staggered animation on load
+  useEffect(() => {
+    setVisibleCards([]);
+    filteredArtists.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleCards(prev => [...prev, index]);
+      }, index * 100);
+    });
+  }, [filteredArtists]);
 
   return (
     <div className="bg-background relative min-h-screen" onMouseMove={handleMouseMove}>
@@ -207,36 +218,81 @@ const Artists = () => {
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {filteredArtists.map((artist) => (
+            {filteredArtists.map((artist, index) => (
               <Link
                 key={artist.id}
                 to={`/artists/${artist.slug}`}
-                className="group relative bg-card rounded-lg overflow-hidden border border-primary/20 hover:border-primary/60 transition-all duration-300 hover:shadow-neon"
+                className={`group relative bg-card rounded-lg overflow-hidden border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:shadow-neon hover:-translate-y-2 hover:rotate-1 ${
+                  visibleCards.includes(index) 
+                    ? 'animate-fade-in opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{
+                  transform: `perspective(1000px) rotateX(${(mouse.y - window.innerHeight/2) * 0.01}deg) rotateY(${(mouse.x - window.innerWidth/2) * 0.01}deg)`,
+                  transitionDelay: `${index * 50}ms`
+                }}
               >
                 <div className="relative aspect-square overflow-hidden">
                   <img 
                     src={artist.image} 
                     alt={artist.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
+                  
+                  {/* Animated gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-primary/40 group-hover:via-primary/10 transition-all duration-500" />
+                  
+                  {/* Glitch effect on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-pulse transform -skew-x-12" 
+                         style={{
+                           animation: 'pulse 0.5s ease-in-out infinite alternate'
+                         }} />
+                  </div>
+                  
+                  {/* Floating particles effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {[...Array(6)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-primary rounded-full animate-pulse"
+                        style={{
+                          left: `${20 + i * 12}%`,
+                          top: `${30 + (i % 3) * 20}%`,
+                          animationDelay: `${i * 200}ms`,
+                          animationDuration: `${1 + i * 0.2}s`
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
                 
-                <div className="p-3 space-y-2">
+                <div className="p-3 space-y-2 relative z-10">
                   <div>
-                    <h3 className="font-hardrace text-white font-bold text-sm glow-text truncate">
+                    <h3 className="font-hardrace text-white font-bold text-sm glow-text truncate group-hover:text-primary transition-colors duration-300">
                       {artist.name}
                     </h3>
-                    <p className="text-xs font-tech text-primary uppercase tracking-wide">
+                    <p className="text-xs font-tech text-primary uppercase tracking-wide group-hover:tracking-widest transition-all duration-300">
                       {artist.genre}
                     </p>
                   </div>
                   
                   <div className="flex justify-between items-center text-xs font-tech text-muted-foreground">
-                    <span>{artist.followers}</span>
-                    <span>{artist.releases} releases</span>
+                    <span className="group-hover:text-primary transition-colors duration-300">{artist.followers}</span>
+                    <span className="group-hover:text-primary transition-colors duration-300">{artist.releases} releases</span>
+                  </div>
+                  
+                  {/* Progress bar animation */}
+                  <div className="w-full h-px bg-primary/20 group-hover:bg-primary/40 transition-colors duration-300 relative overflow-hidden">
+                    <div className="absolute left-0 top-0 h-full bg-primary transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 w-full" />
                   </div>
                 </div>
+                
+                {/* Corner accents */}
+                <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
               </Link>
             ))}
           </div>
