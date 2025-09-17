@@ -235,7 +235,7 @@ const Artists = () => {
               <Link
                 key={artist.id}
                 to={`/artists/${artist.slug}`}
-                className={`group relative bg-card rounded-lg overflow-hidden border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:shadow-neon hover:-translate-y-2 hover:rotate-1 ${
+                className={`group relative bg-card rounded-lg overflow-hidden border border-primary/10 transition-all duration-700 hover:border-primary/30 ${
                   visibleCards.includes(index) 
                     ? 'animate-fade-in opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-8'
@@ -249,63 +249,114 @@ const Artists = () => {
                   <img 
                     src={artist.image} 
                     alt={artist.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:blur-[1px] group-hover:brightness-110"
                   />
                   
-                  {/* Animated gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-primary/40 group-hover:via-primary/10 transition-all duration-500" />
+                  {/* Digital noise overlay */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                       style={{
+                         background: `
+                           repeating-linear-gradient(
+                             0deg,
+                             transparent,
+                             transparent 2px,
+                             hsl(var(--primary) / 0.1) 2px,
+                             hsl(var(--primary) / 0.1) 4px
+                           ),
+                           repeating-linear-gradient(
+                             90deg,
+                             transparent,
+                             transparent 2px,
+                             hsl(var(--primary) / 0.05) 2px,
+                             hsl(var(--primary) / 0.05) 4px
+                           )
+                         `
+                       }} />
                   
-                  {/* Glitch effect on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-pulse transform -skew-x-12" 
+                  {/* Scanline effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                    <div className="absolute w-full h-0.5 bg-primary/80 shadow-[0_0_10px_hsl(var(--primary))] animate-pulse"
                          style={{
-                           animation: 'pulse 0.5s ease-in-out infinite alternate'
+                           top: '30%',
+                           animation: 'pulse 2s ease-in-out infinite'
+                         }} />
+                    <div className="absolute w-full h-0.5 bg-primary/60 shadow-[0_0_8px_hsl(var(--primary))] animate-pulse"
+                         style={{
+                           top: '70%',
+                           animation: 'pulse 2.5s ease-in-out infinite reverse'
                          }} />
                   </div>
                   
-                  {/* Floating particles effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {[...Array(6)].map((_, i) => (
+                  {/* Data stream particles */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    {[...Array(8)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute w-1 h-1 bg-primary rounded-full animate-pulse"
+                        className="absolute w-px h-3 bg-primary/70 shadow-[0_0_4px_hsl(var(--primary))]"
                         style={{
-                          left: `${20 + i * 12}%`,
-                          top: `${30 + (i % 3) * 20}%`,
+                          left: `${10 + i * 10}%`,
+                          animation: `fadeInOut 1.5s ease-in-out infinite`,
                           animationDelay: `${i * 200}ms`,
-                          animationDuration: `${1 + i * 0.2}s`
+                          transform: `translateY(${Math.sin(i) * 20}px)`
                         }}
                       />
                     ))}
                   </div>
                 </div>
                 
-                <div className="p-3 space-y-2 relative z-10">
+                <div className="p-3 space-y-2 relative z-10 group-hover:bg-black/20 transition-colors duration-500">
                   <div>
-                    <h3 className="font-hardrace text-white font-bold text-sm glow-text truncate group-hover:text-primary transition-colors duration-300">
-                      {artist.name}
+                    <h3 className="font-hardrace text-white font-bold text-sm overflow-hidden">
+                      <span className="block group-hover:animate-pulse transition-all duration-300 group-hover:tracking-widest group-hover:text-primary relative">
+                        {artist.name.split('').map((letter, i) => (
+                          <span
+                            key={i}
+                            className="inline-block transition-transform duration-300 group-hover:scale-110"
+                            style={{
+                              animationDelay: `${i * 50}ms`,
+                              transform: `translateY(${Math.sin(i + Date.now() / 1000) * 2}px)`
+                            }}
+                          >
+                            {letter}
+                          </span>
+                        ))}
+                      </span>
                     </h3>
-                    <p className="text-xs font-tech text-primary uppercase tracking-wide group-hover:tracking-widest transition-all duration-300">
-                      {artist.genre}
+                    <p className="text-xs font-tech text-primary uppercase tracking-wide group-hover:tracking-[0.3em] transition-all duration-500 relative overflow-hidden">
+                      <span className="block group-hover:animate-pulse">
+                        {artist.genre}
+                      </span>
+                      {/* Glitch underline */}
+                      <div className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-700 shadow-[0_0_8px_hsl(var(--primary))]" />
                     </p>
                   </div>
                   
-                  <div className="flex justify-between items-center text-xs font-tech text-muted-foreground">
-                    <span className="group-hover:text-primary transition-colors duration-300">{artist.followers}</span>
-                    <span className="group-hover:text-primary transition-colors duration-300">{artist.releases} releases</span>
+                  <div className="flex justify-between items-center text-xs font-tech text-muted-foreground group-hover:text-primary/80 transition-colors duration-300">
+                    <span className="relative">
+                      {artist.followers}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse bg-primary/5 rounded" />
+                    </span>
+                    <span className="relative">
+                      {artist.releases} releases
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse bg-primary/5 rounded" />
+                    </span>
                   </div>
                   
-                  {/* Progress bar animation */}
-                  <div className="w-full h-px bg-primary/20 group-hover:bg-primary/40 transition-colors duration-300 relative overflow-hidden">
-                    <div className="absolute left-0 top-0 h-full bg-primary transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 w-full" />
+                  {/* Digital progress bar */}
+                  <div className="w-full h-px bg-primary/20 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse" />
+                    <div className="absolute left-0 top-0 h-full w-2 bg-primary shadow-[0_0_8px_hsl(var(--primary))] transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </div>
                 </div>
                 
-                {/* Corner accents */}
-                <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
-                <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
-                <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
-                <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-primary/40 group-hover:border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+                {/* Holographic border effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-0 rounded-lg"
+                       style={{
+                         background: `linear-gradient(45deg, transparent 30%, hsl(var(--primary) / 0.3) 50%, transparent 70%)`,
+                         animation: 'shimmer 2s ease-in-out infinite'
+                       }} />
+                </div>
               </Link>
             ))}
           </div>
