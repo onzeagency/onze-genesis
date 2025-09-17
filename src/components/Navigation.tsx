@@ -8,8 +8,8 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
   const navItems = [
     { label: 'Artists', href: '#artists', sectionId: 'artists', page: '/artists' },
-    { label: 'Label', href: '#label', sectionId: 'label', page: '/label' },
     { label: 'Merch', href: '#merch', sectionId: 'merch', page: '/merch' },
+    { label: 'Label', href: '#label', sectionId: 'label', page: '/label' },
     { label: 'Events', href: '#events', sectionId: 'events', page: '/events' },
     { label: 'About Us', href: '#about', sectionId: 'about', page: '/about-us' },
   ];
