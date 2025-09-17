@@ -48,7 +48,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
                 key={item.label}
                 onClick={() => scrollToSection(item.sectionId, item.href)}
                 className={`nav-item transition-colors ${
-                  activeSection === item.sectionId ? 'text-primary' : 'text-foreground hover:text-primary'
+                  activeSection === item.sectionId ? 'text-foreground' : 'text-primary hover:text-foreground'
                 }`}
               >
                 {item.label}
