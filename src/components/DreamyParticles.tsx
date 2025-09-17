@@ -1,7 +1,6 @@
 import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import xiLogo from '@/assets/xi-logo.svg';
 
 // Shader code for dreamy particles
 const vertexShader = `
@@ -177,6 +176,7 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
   
   useEffect(() => {
     console.log('DreamyParticles component mounted');
+    
     // Read primary color from CSS
     const primaryHsl = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
     console.log('Primary HSL:', primaryHsl);
@@ -185,60 +185,105 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
       setColor(new THREE.Color(`hsl(${h}, ${s}, ${l})`));
     }
     
-    // Extract logo shape points
-    const extractLogoShape = () => {
-      console.log('Starting logo shape extraction...');
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      if (!ctx) {
-        console.error('Could not get canvas context');
-        return;
-      }
-      
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      
-      img.onload = () => {
-        console.log('XI Logo loaded successfully');
-        const size = 500; // Larger size for more detail
-        canvas.width = size;
-        canvas.height = size;
-        
-        ctx.drawImage(img, 0, 0, size, size);
-        const imageData = ctx.getImageData(0, 0, size, size);
+    // Create 3D logo geometry from SVG
+    const create3DLogoGeometry = async () => {
+      try {
+        console.log('Creating stylized 3D XI logo...');
         
         const points: THREE.Vector3[] = [];
-        const step = 2; // Sample every 2 pixels for denser effect
         
-        for (let y = 0; y < size; y += step) {
-          for (let x = 0; x < size; x += step) {
-            const i = (y * size + x) * 4;
-            const alpha = imageData.data[i + 3];
-            
-            if (alpha > 50) {
-              // Convert to centered coordinates with larger scale for full screen
-              points.push(new THREE.Vector3(
-                (x - size / 2) * 1.5, // Adjusted scale for better full screen coverage
-                -(y - size / 2) * 1.5, // Adjusted scale for better full screen coverage
-                0
-              ));
+        // Create enhanced X shape with 3D depth and curves
+        const xParticles = 1200;
+        for (let i = 0; i < xParticles; i++) {
+          const t = (i / xParticles - 0.5) * 2; // -1 to 1
+          const depth = (Math.random() - 0.5) * 80;
+          
+          // Create curved X with varying thickness
+          const curve = Math.sin(t * Math.PI) * 10;
+          const thickness = (1 - Math.abs(t)) * 8 + 2;
+          
+          // Main diagonal lines
+          const x1 = t * 160 - 120;
+          const y1 = t * 160 + curve;
+          const x2 = t * 160 - 120;
+          const y2 = -t * 160 + curve;
+          
+          // Add thickness to lines
+          for (let j = 0; j < 3; j++) {
+            const offset = (j - 1) * thickness;
+            points.push(new THREE.Vector3(x1 + offset, y1, depth));
+            points.push(new THREE.Vector3(x2 + offset, y2, depth));
+          }
+        }
+        
+        // Create enhanced I shape with serifs and 3D depth
+        const iParticles = 800;
+        for (let i = 0; i < iParticles; i++) {
+          const y = (i / iParticles - 0.5) * 320;
+          const depth = (Math.random() - 0.5) * 80;
+          
+          // Main vertical line
+          points.push(new THREE.Vector3(120, y, depth));
+          
+          // Add thickness to vertical line
+          points.push(new THREE.Vector3(115, y, depth));
+          points.push(new THREE.Vector3(125, y, depth));
+          
+          // Top and bottom serifs (horizontal lines)
+          if (Math.abs(y) > 140) {
+            const serifWidth = 25;
+            for (let k = -serifWidth; k <= serifWidth; k += 3) {
+              points.push(new THREE.Vector3(120 + k, y, depth));
+              // Add serif thickness
+              if (Math.abs(y) > 150) {
+                points.push(new THREE.Vector3(120 + k, y + (y > 0 ? -8 : 8), depth));
+              }
             }
           }
         }
         
-        console.log(`Extracted ${points.length} points from logo`);
+        // Add some scattered particles for extra effect
+        for (let i = 0; i < 200; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const radius = 80 + Math.random() * 100;
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius;
+          const z = (Math.random() - 0.5) * 100;
+          
+          // Only add particles near the logo area
+          if ((Math.abs(x + 120) < 200 && Math.abs(y) < 180) || 
+              (Math.abs(x - 120) < 30 && Math.abs(y) < 180)) {
+            points.push(new THREE.Vector3(x, y, z));
+          }
+        }
+        
+        console.log(`Created enhanced 3D XI logo with ${points.length} particles`);
         setLogoShape(points);
-      };
-      
-      img.onerror = (error) => {
-        console.error('Failed to load XI logo:', error);
-      };
-      
-      console.log('Loading XI logo from:', xiLogo);
-      img.src = xiLogo;
+        
+      } catch (error) {
+        console.error('Error creating 3D logo:', error);
+        
+        // Simple fallback
+        const fallbackPoints: THREE.Vector3[] = [];
+        
+        // Simple X
+        for (let i = 0; i < 400; i++) {
+          const t = (i / 400 - 0.5) * 2;
+          fallbackPoints.push(new THREE.Vector3(t * 150 - 100, t * 150, 0));
+          fallbackPoints.push(new THREE.Vector3(t * 150 - 100, -t * 150, 0));
+        }
+        
+        // Simple I
+        for (let i = 0; i < 200; i++) {
+          const y = (i / 200 - 0.5) * 300;
+          fallbackPoints.push(new THREE.Vector3(100, y, 0));
+        }
+        
+        setLogoShape(fallbackPoints);
+      }
     };
     
-    extractLogoShape();
+    create3DLogoGeometry();
   }, []);
   
   if (logoShape.length === 0) {
@@ -263,7 +308,7 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
         zIndex: 1,
         background: 'transparent' 
       }}
-      camera={{ position: [0, 0, 400], fov: 75 }} // Adjusted camera for better full screen view
+      camera={{ position: [0, 0, 500], fov: 75 }} // Adjusted for 3D depth
       gl={{ alpha: true, antialias: true }}
       onCreated={({ gl, scene, camera }) => {
         console.log('Three.js Canvas created:', { gl, scene, camera });
