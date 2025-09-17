@@ -78,7 +78,7 @@ const Index = () => {
 
   return (
     <div 
-      className="min-h-screen bg-background relative overflow-x-hidden"
+      className="bg-background relative"
       onMouseMove={handleMouseMove}
     >
       {isLoading && <Loader onComplete={handleLoadingComplete} />}
@@ -97,9 +97,14 @@ const Index = () => {
                   <h1 className="text-8xl font-hardrace text-primary mb-4 glow-text">
                     ONZE
                   </h1>
-                  <p className="text-2xl text-muted-foreground">
+                  <p className="text-2xl text-muted-foreground mb-8">
                     Underground Music Label
                   </p>
+                  <div className="pointer-events-auto">
+                    <p className="text-sm text-muted-foreground/60 animate-pulse">
+                      Scrollez pour découvrir ↓
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
