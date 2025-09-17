@@ -131,10 +131,10 @@ const DreamyParticles: React.FC<DreamyParticlesProps> = ({ mouse }) => {
     <Canvas
       style={{ 
         position: 'absolute', 
-        top: '144px', // Start below navigation (about 9rem)
+        top: 0,
         left: 0, 
         width: '100%', 
-        height: 'calc(100vh - 144px)', // Fill remaining height
+        height: '100vh',
         zIndex: 1,
         background: 'transparent' 
       }}

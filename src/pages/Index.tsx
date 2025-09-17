@@ -82,19 +82,6 @@ const Index = () => {
           <section id="home" className="relative min-h-screen">
             <DreamyParticles mouse={mouse} />
             
-            {showContent && <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <div className="text-center">
-                  <h1 className="text-8xl font-hardrace text-primary mb-4 glow-text">
-                    ONZE
-                  </h1>
-                  <p className="text-2xl text-muted-foreground mb-8">
-                    Underground Music Label
-                  </p>
-                  <div className="pointer-events-auto">
-                    
-                  </div>
-                </div>
-              </div>}
           </section>
 
           {/* Artists Section */}
