@@ -185,7 +185,7 @@ const Merch = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="holo-card group overflow-hidden">
+              <div key={product.id} className="group overflow-hidden">
                 <div className="relative">
                   <div className="aspect-square bg-gradient-to-br from-card to-background overflow-hidden">
                     <img 
@@ -208,7 +208,7 @@ const Merch = () => {
                   )}
                 </div>
                 
-                <div className="p-6 space-y-4">
+                <div className="holo-card p-6 space-y-4">
                   <div>
                     <p className="text-xs font-tech text-primary font-medium uppercase">{product.category}</p>
                     <h3 className="text-lg font-tech text-foreground font-bold">{product.name}</h3>
