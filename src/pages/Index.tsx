@@ -167,11 +167,11 @@ const Index = () => {
             {/* Merch Section */}
             <section 
               id="merch" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background z-20"
+              className="relative min-h-screen py-32 overflow-hidden bg-background z-60"
             >
               <div 
-                className="absolute inset-0 z-0 opacity-20"
-                style={getTransform(-0.1)}
+                className="absolute inset-0 z-10 opacity-20"
+                style={getTransform(-0.05)}
               >
                 <TechnoGrid title="MERCH" />
               </div>
