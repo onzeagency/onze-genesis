@@ -100,7 +100,7 @@ const ArtistDetail = () => {
 
           {/* Artist header */}
           <div className="relative mb-16">
-            <div className="relative aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-lg">
+            <div className="relative aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-3xl">
               <img 
                 src={artist.image} 
                 alt={artist.name}
@@ -179,7 +179,7 @@ const ArtistDetail = () => {
               <CardContent>
                 <div className="space-y-3">
                   {artist.albums.map((album, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-card/50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-card/50 rounded-2xl">
                       <span className="font-medium">{album}</span>
                       <Button size="sm" variant="ghost">
                         <Play className="w-4 h-4" />
@@ -198,7 +198,7 @@ const ArtistDetail = () => {
               <CardContent>
                 <div className="space-y-3">
                   {artist.tracks.map((track, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-card/50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-card/50 rounded-2xl">
                       <div>
                         <div className="font-medium">{track}</div>
                       </div>

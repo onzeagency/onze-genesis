@@ -246,7 +246,7 @@ const Artists = () => {
               <Link
                 key={artist.id}
                 to={`/artists/${artist.slug}`}
-                className={`group relative bg-card rounded-lg overflow-hidden border border-primary/10 transition-all duration-700 hover:border-primary/30 ${
+                className={`group relative bg-card rounded-3xl overflow-hidden border border-primary/10 transition-all duration-700 hover:border-primary/30 ${
                   visibleCards.includes(index) 
                     ? 'animate-fade-in opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-8'
@@ -357,7 +357,7 @@ const Artists = () => {
                 
                 {/* Holographic border effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute inset-0 rounded-lg"
+                  <div className="absolute inset-0 rounded-3xl"
                        style={{
                          background: `linear-gradient(45deg, transparent 30%, hsl(var(--primary) / 0.3) 50%, transparent 70%)`,
                          animation: 'shimmer 2s ease-in-out infinite'
