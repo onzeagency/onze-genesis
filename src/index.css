@@ -234,6 +234,14 @@
   .particle-container {
     @apply absolute inset-0 overflow-hidden;
   }
+
+  /* Glow border effect */
+  .glow-border {
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.5), 
+                0 0 20px hsl(var(--primary) / 0.3), 
+                inset 0 0 10px hsl(var(--primary) / 0.1);
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.4));
+  }
 }
 
 @layer utilities {

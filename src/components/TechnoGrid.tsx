@@ -13,11 +13,11 @@ const TechnoGrid: React.FC<TechnoGridProps> = ({ className = '' }) => {
       {/* Scan lines */}
       <div className="absolute inset-0 scan-lines opacity-20" />
       
-      {/* Corner brackets */}
-      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-primary opacity-60" />
-      <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-primary opacity-60" />
-      <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-primary opacity-60" />
-      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-primary opacity-60" />
+      {/* Corner brackets - Enhanced visibility */}
+      <div className="absolute top-6 left-6 w-12 h-12 border-l-4 border-t-4 border-primary opacity-80 animate-pulse glow-border" />
+      <div className="absolute top-6 right-6 w-12 h-12 border-r-4 border-t-4 border-primary opacity-80 animate-pulse glow-border" style={{ animationDelay: '0.5s' }} />
+      <div className="absolute bottom-6 left-6 w-12 h-12 border-l-4 border-b-4 border-primary opacity-80 animate-pulse glow-border" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-6 right-6 w-12 h-12 border-r-4 border-b-4 border-primary opacity-80 animate-pulse glow-border" style={{ animationDelay: '1.5s' }} />
       
       {/* Center crosshair */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
