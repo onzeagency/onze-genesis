@@ -103,11 +103,11 @@ const Index = () => {
             {/* Artists Section */}
             <section 
               id="artists" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background"
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-10"
             >
               <div 
                 className="absolute inset-0 z-0 opacity-30"
-                style={getTransform(0.3)}
+                style={getTransform(0.1)}
               >
                 <TechnoGrid title="ARTISTS" />
               </div>
@@ -167,11 +167,11 @@ const Index = () => {
             {/* Label Section */}
             <section 
               id="label" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background"
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-20"
             >
               <div 
                 className="absolute inset-0 z-0 opacity-20"
-                style={getTransform(-0.2)}
+                style={getTransform(-0.1)}
               >
                 <TechnoGrid title="LABEL" />
               </div>
@@ -248,11 +248,11 @@ const Index = () => {
             {/* Events Section */}
             <section 
               id="events" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background"
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-30"
             >
               <div 
                 className="absolute inset-0 z-0 opacity-30"
-                style={getTransform(0.25)}
+                style={getTransform(0.1)}
               >
                 <TechnoGrid title="EVENTS" />
               </div>
@@ -334,11 +334,11 @@ const Index = () => {
             {/* Merch Section */}
             <section 
               id="merch" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background"
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-40"
             >
               <div 
                 className="absolute inset-0 z-0 opacity-20"
-                style={getTransform(-0.3)}
+                style={getTransform(-0.1)}
               >
                 <TechnoGrid title="MERCH" />
               </div>
@@ -392,11 +392,11 @@ const Index = () => {
             {/* About Section */}
             <section 
               id="about" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background"
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-50"
             >
               <div 
                 className="absolute inset-0 z-0 opacity-30"
-                style={getTransform(0.35)}
+                style={getTransform(0.1)}
               >
                 <TechnoGrid title="ABOUT" />
               </div>
