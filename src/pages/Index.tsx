@@ -6,6 +6,7 @@ import TechnoGrid from '@/components/TechnoGrid';
 import GlitchText from '@/components/GlitchText';
 import DreamyLogo from '@/components/DreamyLogo';
 import xiLogoMain from '@/assets/xi-logo-main.png';
+import { useParallax } from '@/hooks/useParallax';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,6 +15,8 @@ const Index = () => {
     x: 0,
     y: 0
   });
+  
+  const { scrollY, getTransform, getOpacity } = useParallax();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -38,16 +41,28 @@ const Index = () => {
             
             {/* Hero Section with Cyber Effects */}
             <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-              <TechnoGrid className="z-0" />
+              {/* Background with parallax */}
+              <div 
+                className="absolute inset-0 z-0"
+                style={getTransform(-0.5)}
+              >
+                <TechnoGrid />
+              </div>
               
-              {/* Main XI Logo */}
-              <div className="relative z-20 flex flex-col items-center justify-center space-y-8">
+              {/* Main XI Logo with parallax */}
+              <div 
+                className="relative z-20 flex flex-col items-center justify-center space-y-8"
+                style={getTransform(-0.2)}
+              >
                 <div className="w-full h-96">
                   <DreamyLogo />
                 </div>
                 
                 {/* Underground label */}
-                <div className="text-center space-y-2">
+                <div 
+                  className="text-center space-y-2"
+                  style={getTransform(-0.1)}
+                >
                   <GlitchText 
                     text="UNDERGROUND" 
                     className="text-4xl font-tech font-bold glow-text"
@@ -59,18 +74,46 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Floating cyber elements */}
-              <div className="absolute top-20 left-20 animate-matrix">
+              {/* Floating cyber elements with parallax */}
+              <div 
+                className="absolute top-20 left-20 animate-matrix"
+                style={getTransform(-0.3)}
+              >
                 <div className="w-1 h-20 bg-primary opacity-20" />
               </div>
-              <div className="absolute bottom-20 right-20 animate-matrix" style={{ animationDelay: '2s' }}>
+              <div 
+                className="absolute bottom-20 right-20 animate-matrix" 
+                style={{ 
+                  animationDelay: '2s',
+                  ...getTransform(-0.4)
+                }}
+              >
                 <div className="w-1 h-16 bg-primary opacity-15" />
               </div>
+              
+              {/* Parallax overlay for smooth transition */}
+              <div 
+                className="absolute inset-0 z-30 pointer-events-none"
+                style={{
+                  background: `linear-gradient(to bottom, transparent 0%, rgba(0,0,0,${getOpacity(0, 0.8)}) 100%)`,
+                }}
+              />
             </section>
 
             {/* Artists Section */}
-            <section id="artists" className="relative min-h-screen py-20 overflow-hidden">
-              <TechnoGrid className="z-0 opacity-30" />
+            <section 
+              id="artists" 
+              className="relative min-h-screen py-20 overflow-hidden bg-background"
+              style={{
+                transform: `translate3d(0, ${scrollY > window.innerHeight ? (scrollY - window.innerHeight) * 0.1 : 0}px, 0)`,
+              }}
+            >
+              <div 
+                className="absolute inset-0 z-0 opacity-30"
+                style={getTransform(0.2)}
+              >
+                <TechnoGrid />
+              </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
                   <GlitchText 
