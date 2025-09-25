@@ -23,5 +23,13 @@ export const useParallax = () => {
     return start + (end - start) * progress;
   };
 
-  return { scrollY, getTransform, getOpacity };
+  const getSectionTransform = (sectionIndex: number, speed: number = 0.1) => {
+    const sectionStart = window.innerHeight * sectionIndex;
+    const relativeScroll = Math.max(0, scrollY - sectionStart);
+    return {
+      transform: `translate3d(0, ${relativeScroll * speed}px, 0)`,
+    };
+  };
+
+  return { scrollY, getTransform, getOpacity, getSectionTransform };
 };
