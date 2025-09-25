@@ -14,12 +14,14 @@ const TechnoGrid: React.FC<TechnoGridProps> = ({ className = '', title }) => {
       {/* Scan lines */}
       <div className="absolute inset-0 scan-lines opacity-20" />
       
-      {/* Corner brackets with optional title */}
-      <div className="absolute top-6 left-6 flex items-start space-x-3">
+      {/* Corner brackets with enhanced title visibility */}
+      <div className="absolute top-6 left-6 flex items-start space-x-4">
         <div className="w-12 h-12 border-l-4 border-t-4 border-primary opacity-80 animate-pulse glow-border" />
         {title && (
-          <div className="text-primary font-tech text-sm tracking-widest opacity-80 pt-2">
-            {title}
+          <div className="bg-background/80 backdrop-blur-sm border border-primary/50 px-4 py-2 rounded-lg">
+            <div className="text-primary font-tech text-lg font-bold tracking-widest glow-text">
+              {title}
+            </div>
           </div>
         )}
       </div>
