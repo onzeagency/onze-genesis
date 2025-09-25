@@ -2,9 +2,10 @@ import React from 'react';
 
 interface TechnoGridProps {
   className?: string;
+  title?: string;
 }
 
-const TechnoGrid: React.FC<TechnoGridProps> = ({ className = '' }) => {
+const TechnoGrid: React.FC<TechnoGridProps> = ({ className = '', title }) => {
   return (
     <div className={`absolute inset-0 ${className}`}>
       {/* Main grid */}
@@ -13,8 +14,15 @@ const TechnoGrid: React.FC<TechnoGridProps> = ({ className = '' }) => {
       {/* Scan lines */}
       <div className="absolute inset-0 scan-lines opacity-20" />
       
-      {/* Corner brackets - Enhanced visibility */}
-      <div className="absolute top-6 left-6 w-12 h-12 border-l-4 border-t-4 border-primary opacity-80 animate-pulse glow-border" />
+      {/* Corner brackets with optional title */}
+      <div className="absolute top-6 left-6 flex items-start space-x-3">
+        <div className="w-12 h-12 border-l-4 border-t-4 border-primary opacity-80 animate-pulse glow-border" />
+        {title && (
+          <div className="text-primary font-tech text-sm tracking-widest opacity-80 pt-2">
+            {title}
+          </div>
+        )}
+      </div>
       <div className="absolute top-6 right-6 w-12 h-12 border-r-4 border-t-4 border-primary opacity-80 animate-pulse glow-border" style={{ animationDelay: '0.5s' }} />
       <div className="absolute bottom-6 left-6 w-12 h-12 border-l-4 border-b-4 border-primary opacity-80 animate-pulse glow-border" style={{ animationDelay: '1s' }} />
       <div className="absolute bottom-6 right-6 w-12 h-12 border-r-4 border-b-4 border-primary opacity-80 animate-pulse glow-border" style={{ animationDelay: '1.5s' }} />

@@ -109,7 +109,7 @@ const Index = () => {
                 className="absolute inset-0 z-0 opacity-30"
                 style={getTransform(0.3)}
               >
-                <TechnoGrid />
+                <TechnoGrid title="ARTISTS" />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
@@ -173,7 +173,7 @@ const Index = () => {
                 className="absolute inset-0 z-0 opacity-20"
                 style={getTransform(-0.2)}
               >
-                <TechnoGrid />
+                <TechnoGrid title="LABEL" />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
@@ -254,7 +254,7 @@ const Index = () => {
                 className="absolute inset-0 z-0 opacity-30"
                 style={getTransform(0.25)}
               >
-                <TechnoGrid />
+                <TechnoGrid title="EVENTS" />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
@@ -340,7 +340,7 @@ const Index = () => {
                 className="absolute inset-0 z-0 opacity-20"
                 style={getTransform(-0.3)}
               >
-                <TechnoGrid />
+                <TechnoGrid title="MERCH" />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
@@ -398,7 +398,7 @@ const Index = () => {
                 className="absolute inset-0 z-0 opacity-30"
                 style={getTransform(0.35)}
               >
-                <TechnoGrid />
+                <TechnoGrid title="ABOUT" />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
