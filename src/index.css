@@ -53,8 +53,8 @@
     --shadow-heavy: 0 25px 50px hsl(0 0% 0% / 0.9);
 
     /* Typography */
-    --font-moderniz: 'Inter', sans-serif;
-    --font-tech: 'Inter', sans-serif;
+    --font-moderniz: 'JetBrains Mono', monospace;
+    --font-tech: 'JetBrains Mono', monospace;
 
     /* Advanced animations */
     --transition-cyber: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
