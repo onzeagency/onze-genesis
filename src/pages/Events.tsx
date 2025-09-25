@@ -164,7 +164,7 @@ const Events = () => {
       </section>
 
       {/* Tabs Navigation */}
-      <section className="py-8">
+      <section className="py-8 bg-gradient-to-r from-muted/5 to-muted/10">
         <div className="container mx-auto px-6">
           <div className="flex justify-center space-x-8 mb-16">
             {[
@@ -349,7 +349,7 @@ const Events = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 border-t border-primary/20">
+      <section className="py-16 border-t border-primary/20 bg-gradient-to-b from-background to-white/5">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center space-y-8">
             <h3 className="text-3xl font-tech font-bold text-primary glow-text">

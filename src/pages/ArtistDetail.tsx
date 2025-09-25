@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Play, Download, ExternalLink } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import TechnoGrid from '@/components/TechnoGrid';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -84,10 +85,11 @@ const ArtistDetail = () => {
   }
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-background relative min-h-screen">
       <Navigation activeSection="artists" />
+      <TechnoGrid className="fixed inset-0 z-0 opacity-10" />
       
-      <div className="pt-32 pb-20">
+      <div className="pt-32 pb-20 bg-gradient-to-b from-muted/10 to-background">
         <div className="container mx-auto px-8">
           {/* Back button */}
           <Link 

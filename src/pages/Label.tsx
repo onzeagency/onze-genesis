@@ -133,7 +133,7 @@ const Label = () => {
         <div className="container mx-auto px-6">
           {/* About Tab */}
           {activeTab === 'about' && (
-            <div className="max-w-6xl mx-auto space-y-16">
+            <div className="max-w-6xl mx-auto space-y-16 p-8 bg-gradient-to-br from-white/5 to-muted/10 rounded-3xl border border-primary/20">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="holo-card p-8 space-y-6">
                   <h3 className="text-3xl font-tech font-bold text-primary glow-text">NOTRE VISION</h3>
@@ -216,7 +216,7 @@ const Label = () => {
 
           {/* Team Tab */}
           {activeTab === 'team' && (
-            <div className="max-w-6xl mx-auto space-y-8">
+            <div className="max-w-6xl mx-auto space-y-8 p-8 bg-gradient-to-br from-muted/20 to-background rounded-3xl border border-primary/10">
               <h3 className="text-4xl font-tech font-bold text-center text-primary mb-12 glow-text">
                 L'ÉQUIPE ONZE
               </h3>

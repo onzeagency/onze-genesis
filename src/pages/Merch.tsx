@@ -126,7 +126,7 @@ const Merch = () => {
       <TechnoGrid className="fixed inset-0 z-0 opacity-10" />
       
       {/* Header Section */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-32 pb-16 overflow-hidden bg-white/3">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto space-y-8">
             <GlitchText 
@@ -142,7 +142,7 @@ const Merch = () => {
       </section>
 
       {/* Categories and Cart */}
-      <section className="py-8">
+      <section className="py-8 bg-gradient-to-b from-white/3 to-background">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 mb-16">
             {/* Categories */}

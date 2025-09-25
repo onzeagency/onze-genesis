@@ -146,7 +146,7 @@ const Artists = () => {
       <TechnoGrid className="fixed inset-0 z-0 opacity-10" />
       
       {/* Header Section */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-32 pb-16 overflow-hidden bg-gradient-to-b from-muted/20 to-background">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto space-y-8">
             <GlitchText 
@@ -370,7 +370,7 @@ const Artists = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 border-t border-primary/20">
+      <section className="py-16 border-t border-primary/20 bg-gradient-to-b from-background to-muted/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-tech font-bold text-center text-primary mb-12 glow-text">
