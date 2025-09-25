@@ -49,8 +49,8 @@ export default {
         },
       },
       fontFamily: {
-        'moderniz': ['JetBrains Mono', 'monospace'],
-        'tech': ['JetBrains Mono', 'monospace'],
+        'moderniz': ['Basteleur', 'serif'],
+        'tech': ['Basteleur', 'serif'],
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
