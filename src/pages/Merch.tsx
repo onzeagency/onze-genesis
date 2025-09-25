@@ -164,7 +164,7 @@ const Merch = () => {
 
             {/* Cart Summary */}
             {getTotalItems() > 0 && (
-              <div className="holo-card p-4 flex items-center space-x-4">
+              <div className="subtle-card p-4 flex items-center space-x-4">
                 <div className="text-sm font-tech">
                   <span className="text-primary font-bold">{getTotalItems()}</span> article(s)
                 </div>
@@ -208,7 +208,7 @@ const Merch = () => {
                   )}
                 </div>
                 
-                <div className="holo-card p-6 space-y-4">
+                <div className="subtle-card p-6 space-y-4">
                   <div>
                     <p className="text-xs font-tech text-primary font-medium uppercase">{product.category}</p>
                     <h3 className="text-lg font-tech text-foreground font-bold">{product.name}</h3>

@@ -230,6 +230,19 @@
     @apply opacity-100;
   }
 
+  /* Subtle card effect - minimal framing */
+  .subtle-card {
+    @apply relative bg-card/20 overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, hsl(0 0% 2% / 0.3), hsl(312 20% 3% / 0.2));
+    border-radius: 1rem;
+    backdrop-filter: blur(1px);
+  }
+
+  .subtle-card:hover {
+    @apply bg-card/30;
+    background: linear-gradient(135deg, hsl(0 0% 3% / 0.4), hsl(312 20% 4% / 0.3));
+  }
+
   /* Particle container */
   .particle-container {
     @apply absolute inset-0 overflow-hidden;
