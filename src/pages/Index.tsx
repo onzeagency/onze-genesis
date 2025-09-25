@@ -104,20 +104,17 @@ const Index = () => {
             <section 
               id="artists" 
               className="relative min-h-screen py-20 overflow-hidden bg-background"
-              style={{
-                transform: `translate3d(0, ${scrollY > window.innerHeight ? (scrollY - window.innerHeight) * 0.1 : 0}px, 0)`,
-              }}
             >
               <div 
                 className="absolute inset-0 z-0 opacity-30"
-                style={getTransform(0.2)}
+                style={getTransform(0.3)}
               >
                 <TechnoGrid />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
                   className="text-center mb-16"
-                  style={getTransform(0.1)}
+                  style={getTransform(-0.1)}
                 >
                   <GlitchText 
                     text="ARTISTS" 
@@ -171,27 +168,24 @@ const Index = () => {
             <section 
               id="label" 
               className="relative min-h-screen py-20 overflow-hidden bg-background"
-              style={{
-                transform: `translate3d(0, ${scrollY > window.innerHeight * 2 ? (scrollY - window.innerHeight * 2) * 0.15 : 0}px, 0)`,
-              }}
             >
               <div 
                 className="absolute inset-0 z-0 opacity-20"
-                style={getTransform(-0.1)}
+                style={getTransform(-0.2)}
               >
                 <TechnoGrid />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
                   className="max-w-4xl mx-auto text-center space-y-12"
-                  style={getTransform(-0.08)}
+                  style={getTransform(-0.15)}
                 >
                   <GlitchText 
                     text="LABEL" 
                     className="text-6xl font-hardrace font-bold glow-text"
                   />
                   
-                  <div className="space-y-8" style={getTransform(0.05)}>
+                  <div className="space-y-8" style={getTransform(-0.08)}>
                     <p className="text-xl font-tech text-foreground leading-relaxed">
                       ONZE représente l'avant-garde de la scène techno underground. 
                       Nous développons des talents émergents et repoussons les limites sonores.
@@ -255,9 +249,6 @@ const Index = () => {
             <section 
               id="events" 
               className="relative min-h-screen py-20 overflow-hidden bg-background"
-              style={{
-                transform: `translate3d(0, ${scrollY > window.innerHeight * 3 ? (scrollY - window.innerHeight * 3) * 0.08 : 0}px, 0)`,
-              }}
             >
               <div 
                 className="absolute inset-0 z-0 opacity-30"
@@ -268,7 +259,7 @@ const Index = () => {
               <div className="container mx-auto px-6 relative z-10">
                 <div 
                   className="text-center mb-16"
-                  style={getTransform(-0.12)}
+                  style={getTransform(-0.1)}
                 >
                   <GlitchText 
                     text="EVENTS" 
@@ -281,7 +272,7 @@ const Index = () => {
                 
                 <div 
                   className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-                  style={getTransform(0.08)}
+                  style={getTransform(-0.08)}
                 >
                   <div className="holo-card p-8 space-y-6">
                     <div className="flex justify-between items-start">
@@ -344,20 +335,17 @@ const Index = () => {
             <section 
               id="merch" 
               className="relative min-h-screen py-20 overflow-hidden bg-background"
-              style={{
-                transform: `translate3d(0, ${scrollY > window.innerHeight * 4 ? (scrollY - window.innerHeight * 4) * 0.12 : 0}px, 0)`,
-              }}
             >
               <div 
                 className="absolute inset-0 z-0 opacity-20"
-                style={getTransform(-0.15)}
+                style={getTransform(-0.3)}
               >
                 <TechnoGrid />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
                   className="text-center mb-16"
-                  style={getTransform(0.15)}
+                  style={getTransform(-0.12)}
                 >
                   <GlitchText 
                     text="MERCH" 
@@ -370,7 +358,7 @@ const Index = () => {
                 
                 <div 
                   className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
-                  style={getTransform(-0.1)}
+                  style={getTransform(-0.05)}
                 >
                   {[
                     { name: 'XI LOGO TEE', price: '35€', desc: 'T-shirt premium noir avec logo XI en sérigraphie rose fluo' },
@@ -405,20 +393,17 @@ const Index = () => {
             <section 
               id="about" 
               className="relative min-h-screen py-20 overflow-hidden bg-background"
-              style={{
-                transform: `translate3d(0, ${scrollY > window.innerHeight * 5 ? (scrollY - window.innerHeight * 5) * 0.05 : 0}px, 0)`,
-              }}
             >
               <div 
                 className="absolute inset-0 z-0 opacity-30"
-                style={getTransform(0.3)}
+                style={getTransform(0.35)}
               >
                 <TechnoGrid />
               </div>
               <div className="container mx-auto px-6 relative z-10">
                 <div 
                   className="max-w-4xl mx-auto text-center space-y-12"
-                  style={getTransform(-0.18)}
+                  style={getTransform(-0.15)}
                 >
                   <GlitchText 
                     text="ABOUT" 
@@ -427,7 +412,7 @@ const Index = () => {
                   
                   <div 
                     className="space-y-8"
-                    style={getTransform(0.12)}
+                    style={getTransform(-0.08)}
                   >
                     <p className="text-xl font-tech text-foreground leading-relaxed">
                       ONZE est né de la passion pour l'underground et l'innovation sonore. 
