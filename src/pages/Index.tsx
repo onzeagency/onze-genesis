@@ -164,10 +164,68 @@ const Index = () => {
               </div>
             </section>
 
+            {/* Merch Section */}
+            <section 
+              id="merch" 
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-20"
+            >
+              <div 
+                className="absolute inset-0 z-0 opacity-20"
+                style={getTransform(-0.1)}
+              >
+                <TechnoGrid title="MERCH" />
+              </div>
+              <div className="container mx-auto px-6 relative z-10">
+                <div 
+                  className="text-center mb-16"
+                  style={getTransform(-0.12)}
+                >
+                  <GlitchText 
+                    text="MERCH" 
+                    className="text-6xl font-hardrace font-bold glow-text mb-4"
+                  />
+                  <p className="text-muted-foreground font-tech tracking-[0.2em] max-w-2xl mx-auto">
+                    Portez l'underground avec style
+                  </p>
+                </div>
+                
+                <div 
+                  className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+                  style={getTransform(-0.05)}
+                >
+                  {[
+                    { name: 'XI LOGO TEE', price: '35€', desc: 'T-shirt premium noir avec logo XI en sérigraphie rose fluo' },
+                    { name: 'ONZE HOODIE', price: '65€', desc: 'Sweat à capuche oversized avec broderie techno et poches kangourou' },
+                    { name: 'CYBER CAP', price: '25€', desc: 'Casquette snapback avec patch réfléchissant et détails néon' }
+                  ].map((item, index) => (
+                    <div key={item.name} className="holo-card p-8 space-y-6 group cursor-pointer">
+                      <div className="aspect-square bg-muted/20 border border-primary/30 flex items-center justify-center mb-6">
+                        <div className="text-primary/50 font-tech text-sm tracking-wider">
+                          PRODUCT IMAGE
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-xl font-tech font-bold text-primary">{item.name}</h3>
+                          <span className="text-2xl font-tech font-bold text-foreground">{item.price}</span>
+                        </div>
+                        <p className="text-muted-foreground font-tech text-sm leading-relaxed">
+                          {item.desc}
+                        </p>
+                        <button className="w-full cyber-button">
+                          <span>COMMANDER</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* Label Section */}
             <section 
               id="label" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background z-20"
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-30"
             >
               <div 
                 className="absolute inset-0 z-0 opacity-20"
@@ -248,7 +306,7 @@ const Index = () => {
             {/* Events Section */}
             <section 
               id="events" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background z-30"
+              className="relative min-h-screen py-20 overflow-hidden bg-background z-40"
             >
               <div 
                 className="absolute inset-0 z-0 opacity-30"
@@ -327,64 +385,6 @@ const Index = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Merch Section */}
-            <section 
-              id="merch" 
-              className="relative min-h-screen py-20 overflow-hidden bg-background z-40"
-            >
-              <div 
-                className="absolute inset-0 z-0 opacity-20"
-                style={getTransform(-0.1)}
-              >
-                <TechnoGrid title="MERCH" />
-              </div>
-              <div className="container mx-auto px-6 relative z-10">
-                <div 
-                  className="text-center mb-16"
-                  style={getTransform(-0.12)}
-                >
-                  <GlitchText 
-                    text="MERCH" 
-                    className="text-6xl font-hardrace font-bold glow-text mb-4"
-                  />
-                  <p className="text-muted-foreground font-tech tracking-[0.2em] max-w-2xl mx-auto">
-                    Portez l'underground avec style
-                  </p>
-                </div>
-                
-                <div 
-                  className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
-                  style={getTransform(-0.05)}
-                >
-                  {[
-                    { name: 'XI LOGO TEE', price: '35€', desc: 'T-shirt premium noir avec logo XI en sérigraphie rose fluo' },
-                    { name: 'ONZE HOODIE', price: '65€', desc: 'Sweat à capuche oversized avec broderie techno et poches kangourou' },
-                    { name: 'CYBER CAP', price: '25€', desc: 'Casquette snapback avec patch réfléchissant et détails néon' }
-                  ].map((item, index) => (
-                    <div key={item.name} className="holo-card p-8 space-y-6 group cursor-pointer">
-                      <div className="aspect-square bg-muted/20 border border-primary/30 flex items-center justify-center mb-6">
-                        <div className="text-primary/50 font-tech text-sm tracking-wider">
-                          PRODUCT IMAGE
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex justify-between items-start">
-                          <h3 className="text-xl font-tech font-bold text-primary">{item.name}</h3>
-                          <span className="text-2xl font-tech font-bold text-foreground">{item.price}</span>
-                        </div>
-                        <p className="text-muted-foreground font-tech text-sm leading-relaxed">
-                          {item.desc}
-                        </p>
-                        <button className="w-full cyber-button">
-                          <span>COMMANDER</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
             </section>
