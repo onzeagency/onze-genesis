@@ -25,9 +25,12 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
           <img 
             src={onzeLogo} 
             alt="ONZE" 
-            className="w-10 h-10 bg-transparent animate-cyber-pulse"
+            className="w-10 h-10 animate-cyber-pulse"
             style={{
-              filter: 'drop-shadow(0 0 15px hsl(312 100% 50% / 0.6))'
+              filter: 'drop-shadow(0 0 15px hsl(312 100% 50% / 0.6))',
+              background: 'none',
+              border: 'none',
+              outline: 'none'
             }}
           />
         </a>
