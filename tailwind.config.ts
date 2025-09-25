@@ -49,8 +49,8 @@ export default {
         },
       },
       fontFamily: {
-        'hardrace': ['Racing Sans One', 'monospace'],
-        'tech': ['Orbitron', 'monospace'],
+        'moderniz': ['Inter', 'sans-serif'],
+        'tech': ['Inter', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',

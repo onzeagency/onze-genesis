@@ -53,8 +53,8 @@
     --shadow-heavy: 0 25px 50px hsl(0 0% 0% / 0.9);
 
     /* Typography */
-    --font-hardrace: 'Racing Sans One', monospace;
-    --font-tech: 'Orbitron', monospace;
+    --font-moderniz: 'Inter', sans-serif;
+    --font-tech: 'Inter', sans-serif;
 
     /* Advanced animations */
     --transition-cyber: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -96,11 +96,11 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-tech);
+    font-family: var(--font-moderniz);
   }
 
-  .font-hardrace {
-    font-family: var(--font-hardrace);
+  .font-moderniz {
+    font-family: var(--font-moderniz);
   }
 
   .font-tech {
