@@ -5,16 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-gradient-to-r from-primary to-primary-intense text-primary-foreground hover:shadow-neon hover:scale-[1.02] border border-primary/20",
+        destructive: "bg-gradient-to-r from-destructive to-red-600 text-destructive-foreground hover:shadow-lg hover:scale-[1.02] border border-destructive/20",
+        outline: "border-2 border-primary/30 bg-background/50 backdrop-blur-sm text-primary hover:bg-primary/5 hover:border-primary/50 hover:shadow-neon/50",
+        secondary: "bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground hover:from-secondary/90 hover:to-secondary/70 border border-border/50",
+        ghost: "text-muted-foreground hover:bg-accent/10 hover:text-accent-foreground hover:backdrop-blur-sm",
+        link: "text-primary underline-offset-4 hover:underline hover:text-primary-intense",
+        modern: "bg-gradient-to-r from-background to-background/90 border border-primary/20 text-foreground hover:border-primary/40 hover:shadow-cyber backdrop-blur-sm",
+        tech: "bg-primary/5 border border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/50 backdrop-blur-md",
       },
       size: {
         default: "h-10 px-4 py-2",
